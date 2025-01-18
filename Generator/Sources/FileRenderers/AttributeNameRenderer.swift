@@ -1,11 +1,12 @@
-/// Renders a file that extends `SemConv` with a static property for each attribute name
+/// Renders a file that extends `OTelConventions` with a static property for each attribute name
 struct AttributeNameRenderer: FileRenderer {
-    let directory = "AttributeNames"
-    let fileNamePrefix = "SemConv+"
-
+    let fileNamePrefix = "OTelConventions+"
+    
     func renderFile(_ namespace: Namespace) throws -> String {
         return try """
-        extension SemConv {
+        import OTelConventions
+        
+        extension OTelConventions {
         \(renderNamespace(namespace, indent: 4))
         }
         """

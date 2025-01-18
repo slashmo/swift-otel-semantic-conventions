@@ -4,7 +4,7 @@ import Foundation
 import Yams
 import ZIPFoundation
 
-@available(macOS 10.15.4, *)
+@available(macOS 13, *)
 @main
 struct Generator: AsyncParsableCommand {
     @Option(name: .shortAndLong, help: "The version of semantic conventions to generate from.")
@@ -101,21 +101,25 @@ struct Generator: AsyncParsableCommand {
             }
             namespace.attributes[attributeName] = attribute
         }
-
+        
         // Generate files
-        let writeTo = repoDirectory + "Sources/SemConv/Generated/"
+        
+        
+        let topLevelNamespaces = namespaceTree.subNamespaces.values.sorted(by: { $0.id < $1.id })
+        
+        // Generate individual target files
         let renderers: [FileRenderer] = [
             AttributeNameRenderer(),
-            SpanAttributeRenderer(),
+            // SpanAttributeRenderer(),
         ]
         for renderer in renderers {
-            let directory = "\(writeTo)\(renderer.directory)"
-            if !fileManager.fileExists(atPath: directory) {
-                try fileManager.createDirectory(atPath: directory, withIntermediateDirectories: true)
-            }
-            // We generate a file for each top-level namespace inside a directory
-            for namespace in namespaceTree.subNamespaces.values.sorted(by: { $0.id < $1.id }) {
-                let filePath = "\(writeTo)\(renderer.directory)/\(renderer.fileNamePrefix)\(namespace.id).swift"
+            for namespace in topLevelNamespaces {
+                let directory = "\(repoDirectory)\(namespace.targetPath)/"
+                if !fileManager.fileExists(atPath: directory) {
+                    try fileManager.createDirectory(atPath: directory, withIntermediateDirectories: true)
+                }
+                
+                let filePath = directory + "\(renderer.fileNamePrefix)\(namespace.id).swift"
                 var fileContents = generatedFileHeader
                 fileContents += try renderer.renderFile(namespace)
 
@@ -128,6 +132,54 @@ struct Generator: AsyncParsableCommand {
                 print("Wrote file \(filePath).")
             }
         }
+        
+        // Generate new Package.swift
+        let packageFilePath = repoDirectory + "Package.swift"
+        guard
+            let packageFileData = fileManager.contents(atPath: packageFilePath),
+            let packageFileContents = String(data: packageFileData, encoding: .utf8)
+        else {
+            fatalError("warning: No data found at \(packageFilePath)")
+        }
+        var newPackageFileContents = packageFileContents
+        // Find our header and replace everything below it
+        let packageGeneratedHeader = "// MARK: Generated Code Below. Do Not Edit\n"
+        let insertionIndex = newPackageFileContents.firstRange(of: packageGeneratedHeader)?.lowerBound ?? newPackageFileContents.endIndex
+        newPackageFileContents.removeSubrange(insertionIndex..<newPackageFileContents.endIndex)
+        newPackageFileContents.append(packageGeneratedHeader)
+        
+        // Append products
+        newPackageFileContents.append("\npackage.products.append(contentsOf: [\n")
+        for namespace in topLevelNamespaces {
+            newPackageFileContents.append("""
+                .library(name: "\(namespace.targetName)", targets: ["\(namespace.targetName)"]),\n
+            """)
+        }
+        newPackageFileContents.append("\n])")
+        
+        // Append targets
+        newPackageFileContents.append("\npackage.targets.append(contentsOf: [\n")
+        for namespace in topLevelNamespaces {
+            newPackageFileContents.append("""
+                .target(
+                    name: "\(namespace.targetName)",
+                    dependencies: [
+                        .target(name: "OTelConventions"),
+                    ],
+                    path: "\(namespace.targetPath)"
+                ),
+            
+            """)
+        }
+        newPackageFileContents.append("\n])")
+        
+        // Write new Package.swift
+        try? fileManager.removeItem(atPath: packageFilePath)
+        guard let newPackageFileData = newPackageFileContents.data(using: .utf8) else {
+            fatalError("File data for Package.swift could not be encoded as UTF8")
+        }
+        fileManager.createFile(atPath: packageFilePath, contents: newPackageFileData)
+        print("Wrote file \(packageFilePath).")
     }
 }
 
@@ -142,6 +194,14 @@ class Namespace {
         self.id = id
         self.attributes = attributes
         self.subNamespaces = subNamespaces
+    }
+    
+    var targetName: String {
+        "OTel\(self.id.capitalized.replacingOccurrences(of: "_", with: ""))Conventions"
+    }
+    
+    var targetPath: String {
+        "Sources/Generated/\(targetName)"
     }
 }
 
