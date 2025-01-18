@@ -110,7 +110,7 @@ struct Generator: AsyncParsableCommand {
         // Generate individual target files
         let renderers: [FileRenderer] = [
             AttributeNameRenderer(),
-            // SpanAttributeRenderer(),
+            SpanAttributeRenderer(),
         ]
         for renderer in renderers {
             for namespace in topLevelNamespaces {
@@ -165,6 +165,7 @@ struct Generator: AsyncParsableCommand {
                     name: "\(namespace.targetName)",
                     dependencies: [
                         .target(name: "OTelConventions"),
+                        .product(name: "Tracing", package: "swift-distributed-tracing"),
                     ],
                     path: "\(namespace.targetPath)"
                 ),

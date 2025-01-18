@@ -4,15 +4,12 @@ import PackageDescription
 let package = Package(
     name: "swift-otel-semantic-conventions",
     products: [
-        .library(name: "OTelSemanticConventions", targets: ["OTelHTTPTracingConventions"]),
         .library(name: "OTelSemanticMetricsConventions", targets: ["OTelHTTPMetricsConventions"]),
-        .library(name: "OTelSemanticTracingConventions", targets: ["OTelHTTPTracingConventions"]),
         .library(
             name: "OTelHTTPConventions",
-            targets: ["OTelHTTPMetricsConventions", "OTelHTTPTracingConventions"]
+            targets: ["OTelHTTPMetricsConventions"]
         ),
         .library(name: "OTelHTTPMetricsConventions", targets: ["OTelHTTPMetricsConventions"]),
-        .library(name: "OTelHTTPTracingConventions", targets: ["OTelHTTPTracingConventions"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-metrics.git", from: "2.0.0"),
@@ -26,19 +23,12 @@ let package = Package(
                 .target(name: "OTelMetricsConventionsCore"),
             ]
         ),
-        .target(
-            name: "OTelHTTPTracingConventions",
-            dependencies: [
-                .product(name: "Tracing", package: "swift-distributed-tracing"),
-            ]
-        ),
         .testTarget(
             name: "OTelHTTPConventionsTests",
             dependencies: [
                 .product(name: "Metrics", package: "swift-metrics"),
                 .product(name: "Tracing", package: "swift-distributed-tracing"),
                 .target(name: "OTelHTTPMetricsConventions"),
-                .target(name: "OTelHTTPTracingConventions"),
                 .target(name: "OTelMetricsConventionsTestSupport"),
             ]
         ),
@@ -50,6 +40,7 @@ let package = Package(
         .testTarget(
             name: "OTelConventionsTests",
             dependencies: [
+                .target(name: "OTelHostConventions"),
                 .target(name: "OTelHttpConventions"),
             ]
         ),
@@ -138,6 +129,7 @@ package.targets.append(contentsOf: [
         name: "OTelAndroidConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelAndroidConventions"
     ),
@@ -145,6 +137,7 @@ package.targets.append(contentsOf: [
         name: "OTelArtifactConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelArtifactConventions"
     ),
@@ -152,6 +145,7 @@ package.targets.append(contentsOf: [
         name: "OTelAspnetcoreConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelAspnetcoreConventions"
     ),
@@ -159,6 +153,7 @@ package.targets.append(contentsOf: [
         name: "OTelAwsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelAwsConventions"
     ),
@@ -166,6 +161,7 @@ package.targets.append(contentsOf: [
         name: "OTelAzConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelAzConventions"
     ),
@@ -173,6 +169,7 @@ package.targets.append(contentsOf: [
         name: "OTelBrowserConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelBrowserConventions"
     ),
@@ -180,6 +177,7 @@ package.targets.append(contentsOf: [
         name: "OTelCicdConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCicdConventions"
     ),
@@ -187,6 +185,7 @@ package.targets.append(contentsOf: [
         name: "OTelClientConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelClientConventions"
     ),
@@ -194,6 +193,7 @@ package.targets.append(contentsOf: [
         name: "OTelCloudConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCloudConventions"
     ),
@@ -201,6 +201,7 @@ package.targets.append(contentsOf: [
         name: "OTelCloudeventsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCloudeventsConventions"
     ),
@@ -208,6 +209,7 @@ package.targets.append(contentsOf: [
         name: "OTelCloudfoundryConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCloudfoundryConventions"
     ),
@@ -215,6 +217,7 @@ package.targets.append(contentsOf: [
         name: "OTelCodeConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCodeConventions"
     ),
@@ -222,6 +225,7 @@ package.targets.append(contentsOf: [
         name: "OTelContainerConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelContainerConventions"
     ),
@@ -229,6 +233,7 @@ package.targets.append(contentsOf: [
         name: "OTelCpuConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelCpuConventions"
     ),
@@ -236,6 +241,7 @@ package.targets.append(contentsOf: [
         name: "OTelDbConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDbConventions"
     ),
@@ -243,6 +249,7 @@ package.targets.append(contentsOf: [
         name: "OTelDeploymentConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDeploymentConventions"
     ),
@@ -250,6 +257,7 @@ package.targets.append(contentsOf: [
         name: "OTelDestinationConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDestinationConventions"
     ),
@@ -257,6 +265,7 @@ package.targets.append(contentsOf: [
         name: "OTelDeviceConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDeviceConventions"
     ),
@@ -264,6 +273,7 @@ package.targets.append(contentsOf: [
         name: "OTelDiskConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDiskConventions"
     ),
@@ -271,6 +281,7 @@ package.targets.append(contentsOf: [
         name: "OTelDnsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDnsConventions"
     ),
@@ -278,6 +289,7 @@ package.targets.append(contentsOf: [
         name: "OTelDotnetConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelDotnetConventions"
     ),
@@ -285,6 +297,7 @@ package.targets.append(contentsOf: [
         name: "OTelEnduserConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelEnduserConventions"
     ),
@@ -292,6 +305,7 @@ package.targets.append(contentsOf: [
         name: "OTelErrorConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelErrorConventions"
     ),
@@ -299,6 +313,7 @@ package.targets.append(contentsOf: [
         name: "OTelEventConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelEventConventions"
     ),
@@ -306,6 +321,7 @@ package.targets.append(contentsOf: [
         name: "OTelExceptionConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelExceptionConventions"
     ),
@@ -313,6 +329,7 @@ package.targets.append(contentsOf: [
         name: "OTelFaasConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelFaasConventions"
     ),
@@ -320,6 +337,7 @@ package.targets.append(contentsOf: [
         name: "OTelFeatureFlagConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelFeatureFlagConventions"
     ),
@@ -327,6 +345,7 @@ package.targets.append(contentsOf: [
         name: "OTelFileConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelFileConventions"
     ),
@@ -334,6 +353,7 @@ package.targets.append(contentsOf: [
         name: "OTelGcpConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelGcpConventions"
     ),
@@ -341,6 +361,7 @@ package.targets.append(contentsOf: [
         name: "OTelGenAiConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelGenAiConventions"
     ),
@@ -348,6 +369,7 @@ package.targets.append(contentsOf: [
         name: "OTelGeoConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelGeoConventions"
     ),
@@ -355,6 +377,7 @@ package.targets.append(contentsOf: [
         name: "OTelGoConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelGoConventions"
     ),
@@ -362,6 +385,7 @@ package.targets.append(contentsOf: [
         name: "OTelGraphqlConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelGraphqlConventions"
     ),
@@ -369,6 +393,7 @@ package.targets.append(contentsOf: [
         name: "OTelHerokuConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelHerokuConventions"
     ),
@@ -376,6 +401,7 @@ package.targets.append(contentsOf: [
         name: "OTelHostConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelHostConventions"
     ),
@@ -383,6 +409,7 @@ package.targets.append(contentsOf: [
         name: "OTelHttpConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelHttpConventions"
     ),
@@ -390,6 +417,7 @@ package.targets.append(contentsOf: [
         name: "OTelHwConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelHwConventions"
     ),
@@ -397,6 +425,7 @@ package.targets.append(contentsOf: [
         name: "OTelIosConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelIosConventions"
     ),
@@ -404,6 +433,7 @@ package.targets.append(contentsOf: [
         name: "OTelJvmConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelJvmConventions"
     ),
@@ -411,6 +441,7 @@ package.targets.append(contentsOf: [
         name: "OTelK8SConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelK8SConventions"
     ),
@@ -418,6 +449,7 @@ package.targets.append(contentsOf: [
         name: "OTelLinuxConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelLinuxConventions"
     ),
@@ -425,6 +457,7 @@ package.targets.append(contentsOf: [
         name: "OTelLogConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelLogConventions"
     ),
@@ -432,6 +465,7 @@ package.targets.append(contentsOf: [
         name: "OTelMessageConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelMessageConventions"
     ),
@@ -439,6 +473,7 @@ package.targets.append(contentsOf: [
         name: "OTelMessagingConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelMessagingConventions"
     ),
@@ -446,6 +481,7 @@ package.targets.append(contentsOf: [
         name: "OTelNetConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelNetConventions"
     ),
@@ -453,6 +489,7 @@ package.targets.append(contentsOf: [
         name: "OTelNetworkConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelNetworkConventions"
     ),
@@ -460,6 +497,7 @@ package.targets.append(contentsOf: [
         name: "OTelNodejsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelNodejsConventions"
     ),
@@ -467,6 +505,7 @@ package.targets.append(contentsOf: [
         name: "OTelOciConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelOciConventions"
     ),
@@ -474,6 +513,7 @@ package.targets.append(contentsOf: [
         name: "OTelOpentracingConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelOpentracingConventions"
     ),
@@ -481,6 +521,7 @@ package.targets.append(contentsOf: [
         name: "OTelOsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelOsConventions"
     ),
@@ -488,6 +529,7 @@ package.targets.append(contentsOf: [
         name: "OTelOtelConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelOtelConventions"
     ),
@@ -495,6 +537,7 @@ package.targets.append(contentsOf: [
         name: "OTelPeerConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelPeerConventions"
     ),
@@ -502,6 +545,7 @@ package.targets.append(contentsOf: [
         name: "OTelPoolConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelPoolConventions"
     ),
@@ -509,6 +553,7 @@ package.targets.append(contentsOf: [
         name: "OTelProcessConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelProcessConventions"
     ),
@@ -516,6 +561,7 @@ package.targets.append(contentsOf: [
         name: "OTelProfileConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelProfileConventions"
     ),
@@ -523,6 +569,7 @@ package.targets.append(contentsOf: [
         name: "OTelRpcConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelRpcConventions"
     ),
@@ -530,6 +577,7 @@ package.targets.append(contentsOf: [
         name: "OTelServerConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelServerConventions"
     ),
@@ -537,6 +585,7 @@ package.targets.append(contentsOf: [
         name: "OTelServiceConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelServiceConventions"
     ),
@@ -544,6 +593,7 @@ package.targets.append(contentsOf: [
         name: "OTelSessionConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelSessionConventions"
     ),
@@ -551,6 +601,7 @@ package.targets.append(contentsOf: [
         name: "OTelSignalrConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelSignalrConventions"
     ),
@@ -558,6 +609,7 @@ package.targets.append(contentsOf: [
         name: "OTelSourceConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelSourceConventions"
     ),
@@ -565,6 +617,7 @@ package.targets.append(contentsOf: [
         name: "OTelSystemConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelSystemConventions"
     ),
@@ -572,6 +625,7 @@ package.targets.append(contentsOf: [
         name: "OTelTelemetryConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelTelemetryConventions"
     ),
@@ -579,6 +633,7 @@ package.targets.append(contentsOf: [
         name: "OTelTestConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelTestConventions"
     ),
@@ -586,6 +641,7 @@ package.targets.append(contentsOf: [
         name: "OTelThreadConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelThreadConventions"
     ),
@@ -593,6 +649,7 @@ package.targets.append(contentsOf: [
         name: "OTelTlsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelTlsConventions"
     ),
@@ -600,6 +657,7 @@ package.targets.append(contentsOf: [
         name: "OTelUrlConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelUrlConventions"
     ),
@@ -607,6 +665,7 @@ package.targets.append(contentsOf: [
         name: "OTelUserConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelUserConventions"
     ),
@@ -614,6 +673,7 @@ package.targets.append(contentsOf: [
         name: "OTelUserAgentConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelUserAgentConventions"
     ),
@@ -621,6 +681,7 @@ package.targets.append(contentsOf: [
         name: "OTelV8JsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelV8JsConventions"
     ),
@@ -628,6 +689,7 @@ package.targets.append(contentsOf: [
         name: "OTelVcsConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelVcsConventions"
     ),
@@ -635,6 +697,7 @@ package.targets.append(contentsOf: [
         name: "OTelWebengineConventions",
         dependencies: [
             .target(name: "OTelConventions"),
+            .product(name: "Tracing", package: "swift-distributed-tracing"),
         ],
         path: "Sources/Generated/OTelWebengineConventions"
     ),
