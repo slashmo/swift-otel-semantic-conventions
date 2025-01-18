@@ -1,4 +1,4 @@
-This is a utility package to generate swift-otel-semconv files. It is implemented as a completely different Swift package in order to avoid mixing its depenendencies with that of the main package.
+This is a utility package to generate swift-otel-semantic-conventions files. It is implemented as a completely different Swift package in order to avoid mixing its depenendencies with that of the main package.
 
 To use it, enter this directory in a terminal and run:
 

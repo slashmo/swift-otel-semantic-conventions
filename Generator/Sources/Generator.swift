@@ -10,11 +10,11 @@ struct Generator: AsyncParsableCommand {
     @Option(name: .shortAndLong, help: "The version of semantic conventions to generate from.")
     var version: String
 
-    @Option(name: .shortAndLong, help: "The root of the swift-otel-semconv directory in which the generated files should be saved.")
+    @Option(name: .shortAndLong, help: "The root of the swift-otel-semantic-conventions directory in which the generated files should be saved.")
     var repoDirectory: String = "../"
 
     @Option(name: .shortAndLong, help: "The directory in which to cache the semantic conventions source files.")
-    var cacheDirectory: String = "/tmp/swift-otel-semconv/"
+    var cacheDirectory: String = "/tmp/swift-otel-semantic-conventions/"
 
     mutating func run() async throws {
         assert(version.starts(with: "v"), "Version must start with 'v'")
