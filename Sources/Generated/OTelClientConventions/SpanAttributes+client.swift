@@ -38,7 +38,7 @@ extension SpanAttributes {
             ///     - `client.example.com`
             ///     - `10.1.2.80`
             ///     - `/tmp/my.sock`
-            public var address: Self.Key<String> { .init(name: OTelConventions.client.address) }
+            public var address: Self.Key<String> { .init(name: OTelAttributes.client.address) }
     
             /// `client.port`: Client port number.
             /// 
@@ -49,7 +49,7 @@ extension SpanAttributes {
             /// When observed from the server side, and when communicating through an intermediary, `client.port` SHOULD represent the client port behind any intermediaries,  for example proxies, if it's available. 
             /// 
             /// - Example: `65123`
-            public var port: Self.Key<Int> { .init(name: OTelConventions.client.port) }
+            public var port: Self.Key<Int> { .init(name: OTelAttributes.client.port) }
         }
     
     

@@ -60,7 +60,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `other`
                 ///     - `stack`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.go.memory.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.go.memory.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `stack`: Memory allocated from the heap that is reserved for stack space, whether or not it is currently in-use.

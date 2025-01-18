@@ -65,7 +65,7 @@ extension SpanAttributes {
                 ///     - `v8js`: [V8JS](https://wikipedia.org/wiki/V8_(JavaScript_engine))
                 /// 
                 /// - Example: `cpython`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.profile.frame.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.profile.frame.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `dotnet`: [.NET](https://wikipedia.org/wiki/.NET)

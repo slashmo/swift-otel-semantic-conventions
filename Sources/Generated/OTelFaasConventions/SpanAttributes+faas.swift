@@ -31,7 +31,7 @@ extension SpanAttributes {
             /// - Stability: experimental
             /// 
             /// - Type: boolean
-            public var coldstart: Self.Key<Bool> { .init(name: OTelConventions.faas.coldstart) }
+            public var coldstart: Self.Key<Bool> { .init(name: OTelAttributes.faas.coldstart) }
     
             /// `faas.cron`: A string containing the schedule period as [Cron Expression](https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm). 
             /// 
@@ -40,7 +40,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `0/5 * * * ? *`
-            public var cron: Self.Key<String> { .init(name: OTelConventions.faas.cron) }
+            public var cron: Self.Key<String> { .init(name: OTelAttributes.faas.cron) }
     
             /// `faas.instance`: The execution environment ID as a string, that will be potentially reused for other invocations to the same function/function version. 
             /// 
@@ -51,7 +51,7 @@ extension SpanAttributes {
             /// - **AWS Lambda:** Use the (full) log stream name. 
             /// 
             /// - Example: `2021/06/28/[$LATEST]2f399eb14537447da05ab2a2e39309de`
-            public var instance: Self.Key<String> { .init(name: OTelConventions.faas.instance) }
+            public var instance: Self.Key<String> { .init(name: OTelAttributes.faas.instance) }
     
             /// `faas.invocation_id`: The invocation ID of the current function invocation. 
             /// 
@@ -60,7 +60,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `af9d5aa4-a685-4c5f-a22b-444f80b3cc28`
-            public var invocation_id: Self.Key<String> { .init(name: OTelConventions.faas.invocation_id) }
+            public var invocation_id: Self.Key<String> { .init(name: OTelAttributes.faas.invocation_id) }
     
             /// `faas.invoked_name`: The name of the invoked function. 
             /// 
@@ -71,7 +71,7 @@ extension SpanAttributes {
             /// SHOULD be equal to the `faas.name` resource attribute of the invoked function. 
             /// 
             /// - Example: `my-function`
-            public var invoked_name: Self.Key<String> { .init(name: OTelConventions.faas.invoked_name) }
+            public var invoked_name: Self.Key<String> { .init(name: OTelAttributes.faas.invoked_name) }
     
             /// `faas.invoked_provider`: The cloud provider of the invoked function. 
             /// 
@@ -85,7 +85,7 @@ extension SpanAttributes {
             ///     - `tencent_cloud`: Tencent Cloud
             /// 
             /// SHOULD be equal to the `cloud.provider` resource attribute of the invoked function. 
-            public var invoked_provider: Self.Key<Invoked_ProviderEnum> { .init(name: OTelConventions.faas.invoked_provider) }
+            public var invoked_provider: Self.Key<Invoked_ProviderEnum> { .init(name: OTelAttributes.faas.invoked_provider) }
             
             public enum Invoked_ProviderEnum: String, SpanAttributeConvertible {
                 /// `alibaba_cloud`: Alibaba Cloud
@@ -112,7 +112,7 @@ extension SpanAttributes {
             /// SHOULD be equal to the `cloud.region` resource attribute of the invoked function. 
             /// 
             /// - Example: `eu-central-1`
-            public var invoked_region: Self.Key<String> { .init(name: OTelConventions.faas.invoked_region) }
+            public var invoked_region: Self.Key<String> { .init(name: OTelAttributes.faas.invoked_region) }
     
             /// `faas.max_memory`: The amount of memory available to the serverless function converted to Bytes. 
             /// 
@@ -123,7 +123,7 @@ extension SpanAttributes {
             /// It's recommended to set this attribute since e.g. too little memory can easily stop a Java AWS Lambda function from working correctly. On AWS Lambda, the environment variable `AWS_LAMBDA_FUNCTION_MEMORY_SIZE` provides this information (which must be multiplied by 1,048,576). 
             /// 
             /// - Example: `134217728`
-            public var max_memory: Self.Key<Int> { .init(name: OTelConventions.faas.max_memory) }
+            public var max_memory: Self.Key<Int> { .init(name: OTelAttributes.faas.max_memory) }
     
             /// `faas.name`: The name of the single function that this runtime instance executes. 
             /// 
@@ -136,7 +136,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `my-function`
             ///     - `myazurefunctionapp/some-function-name`
-            public var name: Self.Key<String> { .init(name: OTelConventions.faas.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.faas.name) }
     
             /// `faas.time`: A string containing the function invocation time in the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format expressed in [UTC](https://www.w3.org/TR/NOTE-datetime). 
             /// 
@@ -145,7 +145,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `2020-01-23T13:47:06Z`
-            public var time: Self.Key<String> { .init(name: OTelConventions.faas.time) }
+            public var time: Self.Key<String> { .init(name: OTelAttributes.faas.time) }
     
             /// `faas.trigger`: Type of the trigger which caused this function invocation. 
             /// 
@@ -157,7 +157,7 @@ extension SpanAttributes {
             ///     - `pubsub`: A function is set to be executed when messages are sent to a messaging system
             ///     - `timer`: A function is scheduled to be executed regularly
             ///     - `other`: If none of the others apply
-            public var trigger: Self.Key<TriggerEnum> { .init(name: OTelConventions.faas.trigger) }
+            public var trigger: Self.Key<TriggerEnum> { .init(name: OTelAttributes.faas.trigger) }
             
             public enum TriggerEnum: String, SpanAttributeConvertible {
                 /// `datasource`: A response to some data source operation such as a database or filesystem read/write
@@ -186,7 +186,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `26`
             ///     - `pinkfroid-00002`
-            public var version: Self.Key<String> { .init(name: OTelConventions.faas.version) }
+            public var version: Self.Key<String> { .init(name: OTelAttributes.faas.version) }
         }
     
         /// `faas.document` namespace
@@ -218,7 +218,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `myBucketName`
                 ///     - `myDbName`
-                public var collection: Self.Key<String> { .init(name: OTelConventions.faas.document.collection) }
+                public var collection: Self.Key<String> { .init(name: OTelAttributes.faas.document.collection) }
         
                 /// `faas.document.name`: The document name/table subjected to the operation. For example, in Cloud Storage or S3 is the name of the file, and in Cosmos DB the table name. 
                 /// 
@@ -229,7 +229,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `myFile.txt`
                 ///     - `myTableName`
-                public var name: Self.Key<String> { .init(name: OTelConventions.faas.document.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.faas.document.name) }
         
                 /// `faas.document.operation`: Describes the type of the operation that was performed on the data.
                 /// 
@@ -239,7 +239,7 @@ extension SpanAttributes {
                 ///     - `insert`: When a new object is created.
                 ///     - `edit`: When an object is modified.
                 ///     - `delete`: When an object is deleted.
-                public var operation: Self.Key<OperationEnum> { .init(name: OTelConventions.faas.document.operation) }
+                public var operation: Self.Key<OperationEnum> { .init(name: OTelAttributes.faas.document.operation) }
                 
                 public enum OperationEnum: String, SpanAttributeConvertible {
                     /// `insert`: When a new object is created.
@@ -260,7 +260,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `2020-01-23T13:47:06Z`
-                public var time: Self.Key<String> { .init(name: OTelConventions.faas.document.time) }
+                public var time: Self.Key<String> { .init(name: OTelAttributes.faas.document.time) }
             }
         
         

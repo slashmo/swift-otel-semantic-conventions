@@ -34,7 +34,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `83.164.160.102`
             @available(*, deprecated, message: "Replaced by `client.address`.")
-            public var client_ip: Self.Key<String> { .init(name: OTelConventions.http.client_ip) }
+            public var client_ip: Self.Key<String> { .init(name: OTelAttributes.http.client_ip) }
     
             /// `http.flavor`: Deprecated, use `network.protocol.name` instead.
             /// 
@@ -48,7 +48,7 @@ extension SpanAttributes {
             ///     - `SPDY`: SPDY protocol.
             ///     - `QUIC`: QUIC protocol.
             @available(*, deprecated, message: "Replaced by `network.protocol.name`.")
-            public var flavor: Self.Key<FlavorEnum> { .init(name: OTelConventions.http.flavor) }
+            public var flavor: Self.Key<FlavorEnum> { .init(name: OTelAttributes.http.flavor) }
             
             public enum FlavorEnum: String, SpanAttributeConvertible {
                 /// `1.0`: HTTP/1.0
@@ -76,7 +76,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `www.example.org`
             @available(*, deprecated, message: "Replaced by one of `server.address`, `client.address` or `http.request.header.host`, depending on the usage.")
-            public var host: Self.Key<String> { .init(name: OTelConventions.http.host) }
+            public var host: Self.Key<String> { .init(name: OTelAttributes.http.host) }
     
             /// `http.method`: Deprecated, use `http.request.method` instead.
             /// 
@@ -89,7 +89,7 @@ extension SpanAttributes {
             ///     - `POST`
             ///     - `HEAD`
             @available(*, deprecated, message: "Replaced by `http.request.method`.")
-            public var method: Self.Key<String> { .init(name: OTelConventions.http.method) }
+            public var method: Self.Key<String> { .init(name: OTelAttributes.http.method) }
     
             /// `http.request_content_length`: Deprecated, use `http.request.header.<key>` instead.
             /// 
@@ -99,7 +99,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `3495`
             @available(*, deprecated, message: "Replaced by `http.request.header.<key>`.")
-            public var request_content_length: Self.Key<Int> { .init(name: OTelConventions.http.request_content_length) }
+            public var request_content_length: Self.Key<Int> { .init(name: OTelAttributes.http.request_content_length) }
     
             /// `http.request_content_length_uncompressed`: Deprecated, use `http.request.body.size` instead.
             /// 
@@ -109,7 +109,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `5493`
             @available(*, deprecated, message: "Replaced by `http.request.body.size`.")
-            public var request_content_length_uncompressed: Self.Key<Int> { .init(name: OTelConventions.http.request_content_length_uncompressed) }
+            public var request_content_length_uncompressed: Self.Key<Int> { .init(name: OTelAttributes.http.request_content_length_uncompressed) }
     
             /// `http.response_content_length`: Deprecated, use `http.response.header.<key>` instead.
             /// 
@@ -119,7 +119,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `3495`
             @available(*, deprecated, message: "Replaced by `http.response.header.<key>`.")
-            public var response_content_length: Self.Key<Int> { .init(name: OTelConventions.http.response_content_length) }
+            public var response_content_length: Self.Key<Int> { .init(name: OTelAttributes.http.response_content_length) }
     
             /// `http.response_content_length_uncompressed`: Deprecated, use `http.response.body.size` instead.
             /// 
@@ -129,7 +129,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `5493`
             @available(*, deprecated, message: "Replace by `http.response.body.size`.")
-            public var response_content_length_uncompressed: Self.Key<Int> { .init(name: OTelConventions.http.response_content_length_uncompressed) }
+            public var response_content_length_uncompressed: Self.Key<Int> { .init(name: OTelAttributes.http.response_content_length_uncompressed) }
     
             /// `http.route`: The matched route, that is, the path template in the format used by the respective server framework. 
             /// 
@@ -142,7 +142,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `/users/:userID?`
             ///     - `{controller}/{action}/{id?}`
-            public var route: Self.Key<String> { .init(name: OTelConventions.http.route) }
+            public var route: Self.Key<String> { .init(name: OTelAttributes.http.route) }
     
             /// `http.scheme`: Deprecated, use `url.scheme` instead.
             /// 
@@ -154,7 +154,7 @@ extension SpanAttributes {
             ///     - `http`
             ///     - `https`
             @available(*, deprecated, message: "Replaced by `url.scheme` instead.")
-            public var scheme: Self.Key<String> { .init(name: OTelConventions.http.scheme) }
+            public var scheme: Self.Key<String> { .init(name: OTelAttributes.http.scheme) }
     
             /// `http.server_name`: Deprecated, use `server.address` instead.
             /// 
@@ -164,7 +164,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `example.com`
             @available(*, deprecated, message: "Replaced by `server.address`.")
-            public var server_name: Self.Key<String> { .init(name: OTelConventions.http.server_name) }
+            public var server_name: Self.Key<String> { .init(name: OTelAttributes.http.server_name) }
     
             /// `http.status_code`: Deprecated, use `http.response.status_code` instead.
             /// 
@@ -174,7 +174,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `200`
             @available(*, deprecated, message: "Replaced by `http.response.status_code`.")
-            public var status_code: Self.Key<Int> { .init(name: OTelConventions.http.status_code) }
+            public var status_code: Self.Key<Int> { .init(name: OTelAttributes.http.status_code) }
     
             /// `http.target`: Deprecated, use `url.path` and `url.query` instead.
             /// 
@@ -184,7 +184,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `/search?q=OpenTelemetry#SemConv`
             @available(*, deprecated, message: "Split to `url.path` and `url.query.")
-            public var target: Self.Key<String> { .init(name: OTelConventions.http.target) }
+            public var target: Self.Key<String> { .init(name: OTelAttributes.http.target) }
     
             /// `http.url`: Deprecated, use `url.full` instead.
             /// 
@@ -194,7 +194,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `https://www.foo.bar/search?q=OpenTelemetry#SemConv`
             @available(*, deprecated, message: "Replaced by `url.full`.")
-            public var url: Self.Key<String> { .init(name: OTelConventions.http.url) }
+            public var url: Self.Key<String> { .init(name: OTelAttributes.http.url) }
     
             /// `http.user_agent`: Deprecated, use `user_agent.original` instead.
             /// 
@@ -206,7 +206,7 @@ extension SpanAttributes {
             ///     - `CERN-LineMode/2.15 libwww/2.17b3`
             ///     - `Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1`
             @available(*, deprecated, message: "Replaced by `user_agent.original`.")
-            public var user_agent: Self.Key<String> { .init(name: OTelConventions.http.user_agent) }
+            public var user_agent: Self.Key<String> { .init(name: OTelAttributes.http.user_agent) }
         }
     
         /// `http.connection` namespace
@@ -240,7 +240,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `active`
                 ///     - `idle`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.http.connection.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.http.connection.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `active`: active state.
@@ -345,7 +345,7 @@ extension SpanAttributes {
                 ///     - `GET`
                 ///     - `POST`
                 ///     - `HEAD`
-                public var method: Self.Key<MethodEnum> { .init(name: OTelConventions.http.request.method) }
+                public var method: Self.Key<MethodEnum> { .init(name: OTelAttributes.http.request.method) }
                 
                 public enum MethodEnum: String, SpanAttributeConvertible {
                     /// `CONNECT`: CONNECT method.
@@ -383,7 +383,7 @@ extension SpanAttributes {
                 ///     - `GeT`
                 ///     - `ACL`
                 ///     - `foo`
-                public var method_original: Self.Key<String> { .init(name: OTelConventions.http.request.method_original) }
+                public var method_original: Self.Key<String> { .init(name: OTelAttributes.http.request.method_original) }
         
                 /// `http.request.resend_count`: The ordinal number of request resending attempt (for any reason, including redirects). 
                 /// 
@@ -394,7 +394,7 @@ extension SpanAttributes {
                 /// The resend count SHOULD be updated each time an HTTP request gets resent by the client, regardless of what was the cause of the resending (e.g. redirection, authorization failure, 503 Server Unavailable, network issues, or any other). 
                 /// 
                 /// - Example: `3`
-                public var resend_count: Self.Key<Int> { .init(name: OTelConventions.http.request.resend_count) }
+                public var resend_count: Self.Key<Int> { .init(name: OTelAttributes.http.request.resend_count) }
         
                 /// `http.request.size`: The total size of the request in bytes. This should be the total number of bytes sent over the wire, including the request line (HTTP/1.1), framing (HTTP/2 and HTTP/3), headers, and request body if any. 
                 /// 
@@ -403,7 +403,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `1437`
-                public var size: Self.Key<Int> { .init(name: OTelConventions.http.request.size) }
+                public var size: Self.Key<Int> { .init(name: OTelAttributes.http.request.size) }
             }
         
             /// `http.request.body` namespace
@@ -433,7 +433,7 @@ extension SpanAttributes {
                     /// - Type: int
                     /// 
                     /// - Example: `3495`
-                    public var size: Self.Key<Int> { .init(name: OTelConventions.http.request.body.size) }
+                    public var size: Self.Key<Int> { .init(name: OTelAttributes.http.request.body.size) }
                 }
             
             
@@ -514,7 +514,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `1437`
-                public var size: Self.Key<Int> { .init(name: OTelConventions.http.response.size) }
+                public var size: Self.Key<Int> { .init(name: OTelAttributes.http.response.size) }
         
                 /// `http.response.status_code`: [HTTP response status code](https://tools.ietf.org/html/rfc7231#section-6).
                 /// 
@@ -523,7 +523,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `200`
-                public var status_code: Self.Key<Int> { .init(name: OTelConventions.http.response.status_code) }
+                public var status_code: Self.Key<Int> { .init(name: OTelAttributes.http.response.status_code) }
             }
         
             /// `http.response.body` namespace
@@ -553,7 +553,7 @@ extension SpanAttributes {
                     /// - Type: int
                     /// 
                     /// - Example: `3495`
-                    public var size: Self.Key<Int> { .init(name: OTelConventions.http.response.body.size) }
+                    public var size: Self.Key<Int> { .init(name: OTelAttributes.http.response.body.size) }
                 }
             
             

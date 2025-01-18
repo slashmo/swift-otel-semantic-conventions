@@ -34,7 +34,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `myDataSource`
             @available(*, deprecated, message: "Replaced by `db.client.connection.pool.name`.")
-            public var name: Self.Key<String> { .init(name: OTelConventions.pool.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.pool.name) }
         }
     
     

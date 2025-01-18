@@ -58,7 +58,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.application_id`. This is the same value as reported by `cf app <app-name> --guid`. 
                 /// 
                 /// - Example: `218fc5a9-a5f1-4b54-aa05-46717d0ab26d`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.app.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.app.id) }
         
                 /// `cloudfoundry.app.name`: The name of the application. 
                 /// 
@@ -69,7 +69,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.application_name`. This is the same value as reported by `cf apps`. 
                 /// 
                 /// - Example: `my-app-name`
-                public var name: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.app.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.app.name) }
             }
         
             /// `cloudfoundry.app.instance` namespace
@@ -103,7 +103,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `0`
                     ///     - `1`
-                    public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.app.instance.id) }
+                    public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.app.instance.id) }
                 }
             
             
@@ -139,7 +139,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.org_id`. This is the same value as reported by `cf org <org-name> --guid`. 
                 /// 
                 /// - Example: `218fc5a9-a5f1-4b54-aa05-46717d0ab26d`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.org.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.org.id) }
         
                 /// `cloudfoundry.org.name`: The name of the CloudFoundry organization the app is running in. 
                 /// 
@@ -150,7 +150,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.org_name`. This is the same value as reported by `cf orgs`. 
                 /// 
                 /// - Example: `my-org-name`
-                public var name: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.org.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.org.name) }
             }
         
         
@@ -185,7 +185,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.process_id`. It is supposed to be equal to `VCAP_APPLICATION.app_id` for applications deployed to the runtime. For system components, this could be the actual PID. 
                 /// 
                 /// - Example: `218fc5a9-a5f1-4b54-aa05-46717d0ab26d`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.process.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.process.id) }
         
                 /// `cloudfoundry.process.type`: The type of process. 
                 /// 
@@ -196,7 +196,7 @@ extension SpanAttributes {
                 /// CloudFoundry applications can consist of multiple jobs. Usually the main process will be of type `web`. There can be additional background tasks or side-cars with different process types. 
                 /// 
                 /// - Example: `web`
-                public var type: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.process.type) }
+                public var type: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.process.type) }
             }
         
         
@@ -231,7 +231,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.space_id`. This is the same value as reported by `cf space <space-name> --guid`. 
                 /// 
                 /// - Example: `218fc5a9-a5f1-4b54-aa05-46717d0ab26d`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.space.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.space.id) }
         
                 /// `cloudfoundry.space.name`: The name of the CloudFoundry space the application is running in. 
                 /// 
@@ -242,7 +242,7 @@ extension SpanAttributes {
                 /// Application instrumentation should use the value from environment variable `VCAP_APPLICATION.space_name`. This is the same value as reported by `cf spaces`. 
                 /// 
                 /// - Example: `my-space-name`
-                public var name: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.space.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.space.name) }
             }
         
         
@@ -277,7 +277,7 @@ extension SpanAttributes {
                 /// CloudFoundry defines the `source_id` in the [Loggregator v2 envelope](https://github.com/cloudfoundry/loggregator-api#v2-envelope). It is used for logs and metrics emitted by CloudFoundry. It is supposed to contain the component name, e.g. "gorouter", for CloudFoundry components.  When system components are instrumented, values from the [Bosh spec](https://bosh.io/docs/jobs/#properties-spec) should be used. The `system.id` should be set to `spec.deployment/spec.name`. 
                 /// 
                 /// - Example: `cf/gorouter`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.system.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.system.id) }
             }
         
             /// `cloudfoundry.system.instance` namespace
@@ -309,7 +309,7 @@ extension SpanAttributes {
                     /// CloudFoundry defines the `instance_id` in the [Loggregator v2 envelope](https://github.com/cloudfoundry/loggregator-api#v2-envelope). It is used for logs and metrics emitted by CloudFoundry. It is supposed to contain the vm id for CloudFoundry components.  When system components are instrumented, values from the [Bosh spec](https://bosh.io/docs/jobs/#properties-spec) should be used. The `system.instance.id` should be set to `spec.id`. 
                     /// 
                     /// - Example: `218fc5a9-a5f1-4b54-aa05-46717d0ab26d`
-                    public var id: Self.Key<String> { .init(name: OTelConventions.cloudfoundry.system.instance.id) }
+                    public var id: Self.Key<String> { .init(name: OTelAttributes.cloudfoundry.system.instance.id) }
                 }
             
             

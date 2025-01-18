@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: enum
             ///     - `stdout`: Logs from stdout stream
             ///     - `stderr`: Events from stderr stream
-            public var iostream: Self.Key<IostreamEnum> { .init(name: OTelConventions.log.iostream) }
+            public var iostream: Self.Key<IostreamEnum> { .init(name: OTelAttributes.log.iostream) }
             
             public enum IostreamEnum: String, SpanAttributeConvertible {
                 /// `stdout`: Logs from stdout stream
@@ -73,7 +73,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `audit.log`
-                public var name: Self.Key<String> { .init(name: OTelConventions.log.file.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.log.file.name) }
         
                 /// `log.file.name_resolved`: The basename of the file, with symlinks resolved. 
                 /// 
@@ -82,7 +82,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `uuid.log`
-                public var name_resolved: Self.Key<String> { .init(name: OTelConventions.log.file.name_resolved) }
+                public var name_resolved: Self.Key<String> { .init(name: OTelAttributes.log.file.name_resolved) }
         
                 /// `log.file.path`: The full path to the file. 
                 /// 
@@ -91,7 +91,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `/var/log/mysql/audit.log`
-                public var path: Self.Key<String> { .init(name: OTelConventions.log.file.path) }
+                public var path: Self.Key<String> { .init(name: OTelAttributes.log.file.path) }
         
                 /// `log.file.path_resolved`: The full path to the file, with symlinks resolved. 
                 /// 
@@ -100,7 +100,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `/var/lib/docker/uuid.log`
-                public var path_resolved: Self.Key<String> { .init(name: OTelConventions.log.file.path_resolved) }
+                public var path_resolved: Self.Key<String> { .init(name: OTelAttributes.log.file.path_resolved) }
             }
         
         
@@ -137,7 +137,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `77 <86>1 2015-08-06T21:58:59.694Z 192.168.2.133 inactive - - - Something happened`
                 ///     - `[INFO] 8/3/24 12:34:56 Something happened`
-                public var original: Self.Key<String> { .init(name: OTelConventions.log.record.original) }
+                public var original: Self.Key<String> { .init(name: OTelAttributes.log.record.original) }
         
                 /// `log.record.uid`: A unique identifier for the Log Record. 
                 /// 
@@ -148,7 +148,7 @@ extension SpanAttributes {
                 /// If an id is provided, other log records with the same id will be considered duplicates and can be removed safely. This means, that two distinguishable log records MUST have different values. The id MAY be an [Universally Unique Lexicographically Sortable Identifier (ULID)](https://github.com/ulid/spec), but other identifiers (e.g. UUID) may be used as needed. 
                 /// 
                 /// - Example: `01ARZ3NDEKTSV4RRFFQ69G5FAV`
-                public var uid: Self.Key<String> { .init(name: OTelConventions.log.record.uid) }
+                public var uid: Self.Key<String> { .init(name: OTelAttributes.log.record.uid) }
             }
         
         

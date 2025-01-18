@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `AuthTokenCache`
-            public var service: Self.Key<String> { .init(name: OTelConventions.peer.service) }
+            public var service: Self.Key<String> { .init(name: OTelAttributes.peer.service) }
         }
     
     

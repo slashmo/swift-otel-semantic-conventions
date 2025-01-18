@@ -37,7 +37,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
             ///     - `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
-            public var cipher: Self.Key<String> { .init(name: OTelConventions.tls.cipher) }
+            public var cipher: Self.Key<String> { .init(name: OTelAttributes.tls.cipher) }
     
             /// `tls.curve`: String indicating the curve used for the given cipher, when applicable
             /// 
@@ -46,7 +46,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `secp256r1`
-            public var curve: Self.Key<String> { .init(name: OTelConventions.tls.curve) }
+            public var curve: Self.Key<String> { .init(name: OTelAttributes.tls.curve) }
     
             /// `tls.established`: Boolean flag indicating if the TLS negotiation was successful and transitioned to an encrypted tunnel.
             /// 
@@ -55,7 +55,7 @@ extension SpanAttributes {
             /// - Type: boolean
             /// 
             /// - Example: `true`
-            public var established: Self.Key<Bool> { .init(name: OTelConventions.tls.established) }
+            public var established: Self.Key<Bool> { .init(name: OTelAttributes.tls.established) }
     
             /// `tls.next_protocol`: String indicating the protocol being tunneled. Per the values in the [IANA registry](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids), this string should be lower case. 
             /// 
@@ -64,7 +64,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `http/1.1`
-            public var next_protocol: Self.Key<String> { .init(name: OTelConventions.tls.next_protocol) }
+            public var next_protocol: Self.Key<String> { .init(name: OTelAttributes.tls.next_protocol) }
     
             /// `tls.resumed`: Boolean flag indicating if this TLS connection was resumed from an existing TLS negotiation.
             /// 
@@ -73,7 +73,7 @@ extension SpanAttributes {
             /// - Type: boolean
             /// 
             /// - Example: `true`
-            public var resumed: Self.Key<Bool> { .init(name: OTelConventions.tls.resumed) }
+            public var resumed: Self.Key<Bool> { .init(name: OTelAttributes.tls.resumed) }
         }
     
         /// `tls.client` namespace
@@ -103,14 +103,14 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `MII...`
-                public var certificate: Self.Key<String> { .init(name: OTelConventions.tls.client.certificate) }
+                public var certificate: Self.Key<String> { .init(name: OTelAttributes.tls.client.certificate) }
         
                 /// `tls.client.certificate_chain`: Array of PEM-encoded certificates that make up the certificate chain offered by the client. This is usually mutually-exclusive of `client.certificate` since that value should be the first certificate in the chain. 
                 /// 
                 /// - Stability: experimental
                 /// 
                 /// - Type: stringArray
-                public var certificate_chain: Self.Key<[String]> { .init(name: OTelConventions.tls.client.certificate_chain) }
+                public var certificate_chain: Self.Key<[String]> { .init(name: OTelAttributes.tls.client.certificate_chain) }
         
                 /// `tls.client.issuer`: Distinguished name of [subject](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.6) of the issuer of the x.509 certificate presented by the client.
                 /// 
@@ -119,7 +119,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CN=Example Root CA, OU=Infrastructure Team, DC=example, DC=com`
-                public var issuer: Self.Key<String> { .init(name: OTelConventions.tls.client.issuer) }
+                public var issuer: Self.Key<String> { .init(name: OTelAttributes.tls.client.issuer) }
         
                 /// `tls.client.ja3`: A hash that identifies clients based on how they perform an SSL/TLS handshake.
                 /// 
@@ -128,7 +128,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `d4e5b18d6b55c71272893221c96ba240`
-                public var ja3: Self.Key<String> { .init(name: OTelConventions.tls.client.ja3) }
+                public var ja3: Self.Key<String> { .init(name: OTelAttributes.tls.client.ja3) }
         
                 /// `tls.client.not_after`: Date/Time indicating when client certificate is no longer considered valid.
                 /// 
@@ -137,7 +137,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `2021-01-01T00:00:00.000Z`
-                public var not_after: Self.Key<String> { .init(name: OTelConventions.tls.client.not_after) }
+                public var not_after: Self.Key<String> { .init(name: OTelAttributes.tls.client.not_after) }
         
                 /// `tls.client.not_before`: Date/Time indicating when client certificate is first considered valid.
                 /// 
@@ -146,7 +146,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `1970-01-01T00:00:00.000Z`
-                public var not_before: Self.Key<String> { .init(name: OTelConventions.tls.client.not_before) }
+                public var not_before: Self.Key<String> { .init(name: OTelAttributes.tls.client.not_before) }
         
                 /// `tls.client.server_name`: Deprecated, use `server.address` instead.
                 /// 
@@ -156,7 +156,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `opentelemetry.io`
                 @available(*, deprecated, message: "Replaced by `server.address`.")
-                public var server_name: Self.Key<String> { .init(name: OTelConventions.tls.client.server_name) }
+                public var server_name: Self.Key<String> { .init(name: OTelAttributes.tls.client.server_name) }
         
                 /// `tls.client.subject`: Distinguished name of subject of the x.509 certificate presented by the client.
                 /// 
@@ -165,14 +165,14 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CN=myclient, OU=Documentation Team, DC=example, DC=com`
-                public var subject: Self.Key<String> { .init(name: OTelConventions.tls.client.subject) }
+                public var subject: Self.Key<String> { .init(name: OTelAttributes.tls.client.subject) }
         
                 /// `tls.client.supported_ciphers`: Array of ciphers offered by the client during the client hello.
                 /// 
                 /// - Stability: experimental
                 /// 
                 /// - Type: stringArray
-                public var supported_ciphers: Self.Key<[String]> { .init(name: OTelConventions.tls.client.supported_ciphers) }
+                public var supported_ciphers: Self.Key<[String]> { .init(name: OTelAttributes.tls.client.supported_ciphers) }
             }
         
             /// `tls.client.hash` namespace
@@ -202,7 +202,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `0F76C7F2C55BFD7D8E8B8F4BFBF0C9EC`
-                    public var md5: Self.Key<String> { .init(name: OTelConventions.tls.client.hash.md5) }
+                    public var md5: Self.Key<String> { .init(name: OTelAttributes.tls.client.hash.md5) }
             
                     /// `tls.client.hash.sha1`: Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash. 
                     /// 
@@ -211,7 +211,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `9E393D93138888D288266C2D915214D1D1CCEB2A`
-                    public var sha1: Self.Key<String> { .init(name: OTelConventions.tls.client.hash.sha1) }
+                    public var sha1: Self.Key<String> { .init(name: OTelAttributes.tls.client.hash.sha1) }
             
                     /// `tls.client.hash.sha256`: Certificate fingerprint using the SHA256 digest of DER-encoded version of certificate offered by the client. For consistency with other hash values, this value should be formatted as an uppercase hash. 
                     /// 
@@ -220,7 +220,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `0687F666A054EF17A08E2F2162EAB4CBC0D265E1D7875BE74BF3C712CA92DAF0`
-                    public var sha256: Self.Key<String> { .init(name: OTelConventions.tls.client.hash.sha256) }
+                    public var sha256: Self.Key<String> { .init(name: OTelAttributes.tls.client.hash.sha256) }
                 }
             
             
@@ -254,7 +254,7 @@ extension SpanAttributes {
                 /// - Type: enum
                 ///     - `ssl`
                 ///     - `tls`
-                public var name: Self.Key<NameEnum> { .init(name: OTelConventions.tls.protocol.name) }
+                public var name: Self.Key<NameEnum> { .init(name: OTelAttributes.tls.protocol.name) }
                 
                 public enum NameEnum: String, SpanAttributeConvertible {
                     /// `ssl`
@@ -275,7 +275,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `1.2`
                 ///     - `3`
-                public var version: Self.Key<String> { .init(name: OTelConventions.tls.protocol.version) }
+                public var version: Self.Key<String> { .init(name: OTelAttributes.tls.protocol.version) }
             }
         
         
@@ -308,14 +308,14 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `MII...`
-                public var certificate: Self.Key<String> { .init(name: OTelConventions.tls.server.certificate) }
+                public var certificate: Self.Key<String> { .init(name: OTelAttributes.tls.server.certificate) }
         
                 /// `tls.server.certificate_chain`: Array of PEM-encoded certificates that make up the certificate chain offered by the server. This is usually mutually-exclusive of `server.certificate` since that value should be the first certificate in the chain. 
                 /// 
                 /// - Stability: experimental
                 /// 
                 /// - Type: stringArray
-                public var certificate_chain: Self.Key<[String]> { .init(name: OTelConventions.tls.server.certificate_chain) }
+                public var certificate_chain: Self.Key<[String]> { .init(name: OTelAttributes.tls.server.certificate_chain) }
         
                 /// `tls.server.issuer`: Distinguished name of [subject](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.6) of the issuer of the x.509 certificate presented by the client.
                 /// 
@@ -324,7 +324,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CN=Example Root CA, OU=Infrastructure Team, DC=example, DC=com`
-                public var issuer: Self.Key<String> { .init(name: OTelConventions.tls.server.issuer) }
+                public var issuer: Self.Key<String> { .init(name: OTelAttributes.tls.server.issuer) }
         
                 /// `tls.server.ja3s`: A hash that identifies servers based on how they perform an SSL/TLS handshake.
                 /// 
@@ -333,7 +333,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `d4e5b18d6b55c71272893221c96ba240`
-                public var ja3s: Self.Key<String> { .init(name: OTelConventions.tls.server.ja3s) }
+                public var ja3s: Self.Key<String> { .init(name: OTelAttributes.tls.server.ja3s) }
         
                 /// `tls.server.not_after`: Date/Time indicating when server certificate is no longer considered valid.
                 /// 
@@ -342,7 +342,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `2021-01-01T00:00:00.000Z`
-                public var not_after: Self.Key<String> { .init(name: OTelConventions.tls.server.not_after) }
+                public var not_after: Self.Key<String> { .init(name: OTelAttributes.tls.server.not_after) }
         
                 /// `tls.server.not_before`: Date/Time indicating when server certificate is first considered valid.
                 /// 
@@ -351,7 +351,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `1970-01-01T00:00:00.000Z`
-                public var not_before: Self.Key<String> { .init(name: OTelConventions.tls.server.not_before) }
+                public var not_before: Self.Key<String> { .init(name: OTelAttributes.tls.server.not_before) }
         
                 /// `tls.server.subject`: Distinguished name of subject of the x.509 certificate presented by the server.
                 /// 
@@ -360,7 +360,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CN=myserver, OU=Documentation Team, DC=example, DC=com`
-                public var subject: Self.Key<String> { .init(name: OTelConventions.tls.server.subject) }
+                public var subject: Self.Key<String> { .init(name: OTelAttributes.tls.server.subject) }
             }
         
             /// `tls.server.hash` namespace
@@ -390,7 +390,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `0F76C7F2C55BFD7D8E8B8F4BFBF0C9EC`
-                    public var md5: Self.Key<String> { .init(name: OTelConventions.tls.server.hash.md5) }
+                    public var md5: Self.Key<String> { .init(name: OTelAttributes.tls.server.hash.md5) }
             
                     /// `tls.server.hash.sha1`: Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the server. For consistency with other hash values, this value should be formatted as an uppercase hash. 
                     /// 
@@ -399,7 +399,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `9E393D93138888D288266C2D915214D1D1CCEB2A`
-                    public var sha1: Self.Key<String> { .init(name: OTelConventions.tls.server.hash.sha1) }
+                    public var sha1: Self.Key<String> { .init(name: OTelAttributes.tls.server.hash.sha1) }
             
                     /// `tls.server.hash.sha256`: Certificate fingerprint using the SHA256 digest of DER-encoded version of certificate offered by the server. For consistency with other hash values, this value should be formatted as an uppercase hash. 
                     /// 
@@ -408,7 +408,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `0687F666A054EF17A08E2F2162EAB4CBC0D265E1D7875BE74BF3C712CA92DAF0`
-                    public var sha256: Self.Key<String> { .init(name: OTelConventions.tls.server.hash.sha256) }
+                    public var sha256: Self.Key<String> { .init(name: OTelAttributes.tls.server.hash.sha256) }
                 }
             
             

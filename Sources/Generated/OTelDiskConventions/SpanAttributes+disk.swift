@@ -58,7 +58,7 @@ extension SpanAttributes {
                 ///     - `write`
                 /// 
                 /// - Example: `read`
-                public var direction: Self.Key<DirectionEnum> { .init(name: OTelConventions.disk.io.direction) }
+                public var direction: Self.Key<DirectionEnum> { .init(name: OTelAttributes.disk.io.direction) }
                 
                 public enum DirectionEnum: String, SpanAttributeConvertible {
                     /// `read`

@@ -35,7 +35,7 @@ extension SpanAttributes {
             /// This attribute might not be supported by some file systems — NFS, FAT32, in embedded OS, etc. 
             /// 
             /// - Example: `2021-01-01T12:00:00Z`
-            public var accessed: Self.Key<String> { .init(name: OTelConventions.file.accessed) }
+            public var accessed: Self.Key<String> { .init(name: OTelAttributes.file.accessed) }
     
             /// `file.attributes`: Array of file attributes. 
             /// 
@@ -44,7 +44,7 @@ extension SpanAttributes {
             /// - Type: stringArray
             /// 
             /// Attributes names depend on the OS or file system. Here’s a non-exhaustive list of values expected for this attribute: `archive`, `compressed`, `directory`, `encrypted`, `execute`, `hidden`, `immutable`, `journaled`, `read`, `readonly`, `symbolic link`, `system`, `temporary`, `write`. 
-            public var attributes: Self.Key<[String]> { .init(name: OTelConventions.file.attributes) }
+            public var attributes: Self.Key<[String]> { .init(name: OTelAttributes.file.attributes) }
     
             /// `file.changed`: Time when the file attributes or metadata was last changed, in ISO 8601 format. 
             /// 
@@ -55,7 +55,7 @@ extension SpanAttributes {
             /// `file.changed` captures the time when any of the file's properties or attributes (including the content) are changed, while `file.modified` captures the timestamp when the file content is modified. 
             /// 
             /// - Example: `2021-01-01T12:00:00Z`
-            public var changed: Self.Key<String> { .init(name: OTelConventions.file.changed) }
+            public var changed: Self.Key<String> { .init(name: OTelAttributes.file.changed) }
     
             /// `file.created`: Time when the file was created, in ISO 8601 format. 
             /// 
@@ -66,7 +66,7 @@ extension SpanAttributes {
             /// This attribute might not be supported by some file systems — NFS, FAT32, in embedded OS, etc. 
             /// 
             /// - Example: `2021-01-01T12:00:00Z`
-            public var created: Self.Key<String> { .init(name: OTelConventions.file.created) }
+            public var created: Self.Key<String> { .init(name: OTelAttributes.file.created) }
     
             /// `file.directory`: Directory where the file is located. It should include the drive letter, when appropriate. 
             /// 
@@ -77,7 +77,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `/home/user`
             ///     - `C:\Program Files\MyApp`
-            public var directory: Self.Key<String> { .init(name: OTelConventions.file.directory) }
+            public var directory: Self.Key<String> { .init(name: OTelAttributes.file.directory) }
     
             /// `file.extension`: File extension, excluding the leading dot. 
             /// 
@@ -90,7 +90,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `png`
             ///     - `gz`
-            public var `extension`: Self.Key<String> { .init(name: OTelConventions.file.`extension`) }
+            public var `extension`: Self.Key<String> { .init(name: OTelAttributes.file.`extension`) }
     
             /// `file.fork_name`: Name of the fork. A fork is additional data associated with a filesystem object. 
             /// 
@@ -101,7 +101,7 @@ extension SpanAttributes {
             /// On Linux, a resource fork is used to store additional data with a filesystem object. A file always has at least one fork for the data portion, and additional forks may exist. On NTFS, this is analogous to an Alternate Data Stream (ADS), and the default data stream for a file is just called $DATA. Zone.Identifier is commonly used by Windows to track contents downloaded from the Internet. An ADS is typically of the form: C:\path\to\filename.extension:some_fork_name, and some_fork_name is the value that should populate `fork_name`. `filename.extension` should populate `file.name`, and `extension` should populate `file.extension`. The full path, `file.path`, will include the fork name. 
             /// 
             /// - Example: `Zone.Identifer`
-            public var fork_name: Self.Key<String> { .init(name: OTelConventions.file.fork_name) }
+            public var fork_name: Self.Key<String> { .init(name: OTelAttributes.file.fork_name) }
     
             /// `file.inode`: Inode representing the file in the filesystem. 
             /// 
@@ -110,7 +110,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `256383`
-            public var inode: Self.Key<String> { .init(name: OTelConventions.file.inode) }
+            public var inode: Self.Key<String> { .init(name: OTelAttributes.file.inode) }
     
             /// `file.mode`: Mode of the file in octal representation. 
             /// 
@@ -119,7 +119,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `0640`
-            public var mode: Self.Key<String> { .init(name: OTelConventions.file.mode) }
+            public var mode: Self.Key<String> { .init(name: OTelAttributes.file.mode) }
     
             /// `file.modified`: Time when the file content was last modified, in ISO 8601 format. 
             /// 
@@ -128,7 +128,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `2021-01-01T12:00:00Z`
-            public var modified: Self.Key<String> { .init(name: OTelConventions.file.modified) }
+            public var modified: Self.Key<String> { .init(name: OTelAttributes.file.modified) }
     
             /// `file.name`: Name of the file including the extension, without the directory. 
             /// 
@@ -137,7 +137,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `example.png`
-            public var name: Self.Key<String> { .init(name: OTelConventions.file.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.file.name) }
     
             /// `file.path`: Full path to the file, including the file name. It should include the drive letter, when appropriate. 
             /// 
@@ -148,14 +148,14 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `/home/alice/example.png`
             ///     - `C:\Program Files\MyApp\myapp.exe`
-            public var path: Self.Key<String> { .init(name: OTelConventions.file.path) }
+            public var path: Self.Key<String> { .init(name: OTelAttributes.file.path) }
     
             /// `file.size`: File size in bytes. 
             /// 
             /// - Stability: experimental
             /// 
             /// - Type: int
-            public var size: Self.Key<Int> { .init(name: OTelConventions.file.size) }
+            public var size: Self.Key<Int> { .init(name: OTelAttributes.file.size) }
         }
     
         /// `file.group` namespace
@@ -185,7 +185,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `1000`
-                public var id: Self.Key<String> { .init(name: OTelConventions.file.group.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.file.group.id) }
         
                 /// `file.group.name`: Primary group name of the file. 
                 /// 
@@ -194,7 +194,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `users`
-                public var name: Self.Key<String> { .init(name: OTelConventions.file.group.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.file.group.name) }
             }
         
         
@@ -227,7 +227,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `1000`
-                public var id: Self.Key<String> { .init(name: OTelConventions.file.owner.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.file.owner.id) }
         
                 /// `file.owner.name`: Username of the file owner. 
                 /// 
@@ -236,7 +236,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `root`
-                public var name: Self.Key<String> { .init(name: OTelConventions.file.owner.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.file.owner.name) }
             }
         
         
@@ -271,7 +271,7 @@ extension SpanAttributes {
                 /// This attribute is only applicable to symbolic links. 
                 /// 
                 /// - Example: `/usr/bin/python3`
-                public var target_path: Self.Key<String> { .init(name: OTelConventions.file.symbolic_link.target_path) }
+                public var target_path: Self.Key<String> { .init(name: OTelAttributes.file.symbolic_link.target_path) }
             }
         
         

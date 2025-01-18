@@ -104,10 +104,10 @@ struct SpanAttributeRenderer: FileRenderer {
             default:
                 throw SpanAttributeRendererError.invalidStandardAttributeType(attribute.type)
             }
-            result.append("\npublic var \(propertyName): Self.Key<\(swiftType)> { .init(name: OTelConventions.\(namespace.id).\(propertyName)) }")
+            result.append("\npublic var \(propertyName): Self.Key<\(swiftType)> { .init(name: OTelAttributes.\(namespace.id).\(propertyName)) }")
         } else if let type = attribute.type as? Attribute.EnumType {
             let enumTypeName = "\(attributeName.capitalized)Enum"
-            result.append("\npublic var \(propertyName): Self.Key<\(enumTypeName)> { .init(name: OTelConventions.\(namespace.id).\(propertyName)) }")
+            result.append("\npublic var \(propertyName): Self.Key<\(enumTypeName)> { .init(name: OTelAttributes.\(namespace.id).\(propertyName)) }")
 
             result.append("\n\npublic enum \(enumTypeName): String, SpanAttributeConvertible {")
             for member in type.members {

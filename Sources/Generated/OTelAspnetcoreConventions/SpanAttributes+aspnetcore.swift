@@ -85,7 +85,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `handled`
                     ///     - `unhandled`
-                    public var result: Self.Key<ResultEnum> { .init(name: OTelConventions.aspnetcore.diagnostics.exception.result) }
+                    public var result: Self.Key<ResultEnum> { .init(name: OTelAttributes.aspnetcore.diagnostics.exception.result) }
                     
                     public enum ResultEnum: String, SpanAttributeConvertible {
                         /// `handled`: Exception was handled by the exception handling middleware.
@@ -132,7 +132,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `Contoso.MyHandler`
-                    public var type: Self.Key<String> { .init(name: OTelConventions.aspnetcore.diagnostics.handler.type) }
+                    public var type: Self.Key<String> { .init(name: OTelAttributes.aspnetcore.diagnostics.handler.type) }
                 }
             
             
@@ -169,7 +169,7 @@ extension SpanAttributes {
                 ///     - `fixed`
                 ///     - `sliding`
                 ///     - `token`
-                public var policy: Self.Key<String> { .init(name: OTelConventions.aspnetcore.rate_limiting.policy) }
+                public var policy: Self.Key<String> { .init(name: OTelAttributes.aspnetcore.rate_limiting.policy) }
         
                 /// `aspnetcore.rate_limiting.result`: Rate-limiting result, shows whether the lease was acquired or contains a rejection reason
                 /// 
@@ -184,7 +184,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `acquired`
                 ///     - `request_canceled`
-                public var result: Self.Key<ResultEnum> { .init(name: OTelConventions.aspnetcore.rate_limiting.result) }
+                public var result: Self.Key<ResultEnum> { .init(name: OTelAttributes.aspnetcore.rate_limiting.result) }
                 
                 public enum ResultEnum: String, SpanAttributeConvertible {
                     /// `acquired`: Lease was acquired
@@ -231,7 +231,7 @@ extension SpanAttributes {
                 /// - Type: boolean
                 /// 
                 /// - Example: `true`
-                public var is_unhandled: Self.Key<Bool> { .init(name: OTelConventions.aspnetcore.request.is_unhandled) }
+                public var is_unhandled: Self.Key<Bool> { .init(name: OTelAttributes.aspnetcore.request.is_unhandled) }
             }
         
         
@@ -264,7 +264,7 @@ extension SpanAttributes {
                 /// - Type: boolean
                 /// 
                 /// - Example: `true`
-                public var is_fallback: Self.Key<Bool> { .init(name: OTelConventions.aspnetcore.routing.is_fallback) }
+                public var is_fallback: Self.Key<Bool> { .init(name: OTelAttributes.aspnetcore.routing.is_fallback) }
         
                 /// `aspnetcore.routing.match_status`: Match result - success or failure
                 /// 
@@ -277,7 +277,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `success`
                 ///     - `failure`
-                public var match_status: Self.Key<Match_StatusEnum> { .init(name: OTelConventions.aspnetcore.routing.match_status) }
+                public var match_status: Self.Key<Match_StatusEnum> { .init(name: OTelAttributes.aspnetcore.routing.match_status) }
                 
                 public enum Match_StatusEnum: String, SpanAttributeConvertible {
                     /// `success`: Match succeeded

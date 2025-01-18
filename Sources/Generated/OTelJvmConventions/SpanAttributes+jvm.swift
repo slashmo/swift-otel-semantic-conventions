@@ -83,7 +83,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `mapped`
                     ///     - `direct`
-                    public var name: Self.Key<String> { .init(name: OTelConventions.jvm.buffer.pool.name) }
+                    public var name: Self.Key<String> { .init(name: OTelAttributes.jvm.buffer.pool.name) }
                 }
             
             
@@ -121,7 +121,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `end of minor GC`
                 ///     - `end of major GC`
-                public var action: Self.Key<String> { .init(name: OTelConventions.jvm.gc.action) }
+                public var action: Self.Key<String> { .init(name: OTelAttributes.jvm.gc.action) }
         
                 /// `jvm.gc.name`: Name of the garbage collector.
                 /// 
@@ -134,7 +134,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `G1 Young Generation`
                 ///     - `G1 Old Generation`
-                public var name: Self.Key<String> { .init(name: OTelConventions.jvm.gc.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.jvm.gc.name) }
             }
         
         
@@ -171,7 +171,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `heap`
                 ///     - `non_heap`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.jvm.memory.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.jvm.memory.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `heap`: Heap memory.
@@ -216,7 +216,7 @@ extension SpanAttributes {
                     ///     - `G1 Old Gen`
                     ///     - `G1 Eden space`
                     ///     - `G1 Survivor Space`
-                    public var name: Self.Key<String> { .init(name: OTelConventions.jvm.memory.pool.name) }
+                    public var name: Self.Key<String> { .init(name: OTelAttributes.jvm.memory.pool.name) }
                 }
             
             
@@ -248,7 +248,7 @@ extension SpanAttributes {
                 /// - Stability: stable
                 /// 
                 /// - Type: boolean
-                public var daemon: Self.Key<Bool> { .init(name: OTelConventions.jvm.thread.daemon) }
+                public var daemon: Self.Key<Bool> { .init(name: OTelAttributes.jvm.thread.daemon) }
         
                 /// `jvm.thread.state`: State of the thread.
                 /// 
@@ -265,7 +265,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `runnable`
                 ///     - `blocked`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.jvm.thread.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.jvm.thread.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `new`: A thread that has not yet started is in this state.

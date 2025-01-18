@@ -60,7 +60,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `www.example.com`
                 ///     - `opentelemetry.io`
-                public var name: Self.Key<String> { .init(name: OTelConventions.dns.question.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.dns.question.name) }
             }
         
         

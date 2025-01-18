@@ -35,7 +35,7 @@ extension SpanAttributes {
             /// The value may be sanitized to exclude sensitive information.
             /// 
             /// - Example: `query findBookById { bookById(id: ?) { name } }`
-            public var document: Self.Key<String> { .init(name: OTelConventions.graphql.document) }
+            public var document: Self.Key<String> { .init(name: OTelAttributes.graphql.document) }
         }
     
         /// `graphql.operation` namespace
@@ -65,7 +65,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `findBookById`
-                public var name: Self.Key<String> { .init(name: OTelConventions.graphql.operation.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.graphql.operation.name) }
         
                 /// `graphql.operation.type`: The type of the operation being executed.
                 /// 
@@ -80,7 +80,7 @@ extension SpanAttributes {
                 ///     - `query`
                 ///     - `mutation`
                 ///     - `subscription`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.graphql.operation.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.graphql.operation.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `query`: GraphQL query

@@ -109,7 +109,7 @@ struct Generator: AsyncParsableCommand {
         
         // Generate individual target files
         let renderers: [FileRenderer] = [
-            AttributeNameRenderer(),
+            OTelAttributeRenderer(),
             SpanAttributeRenderer(),
         ]
         for renderer in renderers {

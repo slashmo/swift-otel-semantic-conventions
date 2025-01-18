@@ -56,7 +56,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `2daa2797-e42b-4624-9322-ec3f968df4da`
-                public var id: Self.Key<String> { .init(name: OTelConventions.heroku.app.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.heroku.app.id) }
             }
         
         
@@ -89,7 +89,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `e6134959463efd8966b20e75b913cafe3f5ec`
-                public var commit: Self.Key<String> { .init(name: OTelConventions.heroku.release.commit) }
+                public var commit: Self.Key<String> { .init(name: OTelAttributes.heroku.release.commit) }
         
                 /// `heroku.release.creation_timestamp`: Time and date the release was created 
                 /// 
@@ -98,7 +98,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `2022-10-23T18:00:42Z`
-                public var creation_timestamp: Self.Key<String> { .init(name: OTelConventions.heroku.release.creation_timestamp) }
+                public var creation_timestamp: Self.Key<String> { .init(name: OTelAttributes.heroku.release.creation_timestamp) }
             }
         
         

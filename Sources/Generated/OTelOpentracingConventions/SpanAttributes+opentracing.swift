@@ -35,7 +35,7 @@ extension SpanAttributes {
             ///     - `follows_from`: The parent Span doesn't depend in any way on the result of the child Span
             /// 
             /// The causal relationship between a child Span and a parent Span. 
-            public var ref_type: Self.Key<Ref_TypeEnum> { .init(name: OTelConventions.opentracing.ref_type) }
+            public var ref_type: Self.Key<Ref_TypeEnum> { .init(name: OTelAttributes.opentracing.ref_type) }
             
             public enum Ref_TypeEnum: String, SpanAttributeConvertible {
                 /// `child_of`: The parent Span depends on the child Span in some capacity

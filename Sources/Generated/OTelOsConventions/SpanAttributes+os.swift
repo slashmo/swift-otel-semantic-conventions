@@ -36,7 +36,7 @@ extension SpanAttributes {
             ///     - `TQ3C.230805.001.B2`
             ///     - `20E247`
             ///     - `22621`
-            public var build_id: Self.Key<String> { .init(name: OTelConventions.os.build_id) }
+            public var build_id: Self.Key<String> { .init(name: OTelAttributes.os.build_id) }
     
             /// `os.description`: Human readable (not intended to be parsed) OS version information, like e.g. reported by `ver` or `lsb_release -a` commands. 
             /// 
@@ -47,7 +47,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `Microsoft Windows [Version 10.0.18363.778]`
             ///     - `Ubuntu 18.04.1 LTS`
-            public var description: Self.Key<String> { .init(name: OTelConventions.os.description) }
+            public var description: Self.Key<String> { .init(name: OTelAttributes.os.description) }
     
             /// `os.name`: Human readable operating system name.
             /// 
@@ -59,7 +59,7 @@ extension SpanAttributes {
             ///     - `iOS`
             ///     - `Android`
             ///     - `Ubuntu`
-            public var name: Self.Key<String> { .init(name: OTelConventions.os.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.os.name) }
     
             /// `os.type`: The operating system type. 
             /// 
@@ -77,7 +77,7 @@ extension SpanAttributes {
             ///     - `aix`: AIX (Advanced Interactive eXecutive)
             ///     - `solaris`: SunOS, Oracle Solaris
             ///     - `z_os`: IBM z/OS
-            public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.os.type) }
+            public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.os.type) }
             
             public enum TypeEnum: String, SpanAttributeConvertible {
                 /// `windows`: Microsoft Windows
@@ -116,7 +116,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `14.2.1`
             ///     - `18.04.1`
-            public var version: Self.Key<String> { .init(name: OTelConventions.os.version) }
+            public var version: Self.Key<String> { .init(name: OTelAttributes.os.version) }
         }
     
     

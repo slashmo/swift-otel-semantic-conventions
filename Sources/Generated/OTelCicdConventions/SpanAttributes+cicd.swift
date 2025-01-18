@@ -60,7 +60,7 @@ extension SpanAttributes {
                 ///     - `Lint`
                 ///     - `Deploy Go Project`
                 ///     - `deploy_to_environment`
-                public var name: Self.Key<String> { .init(name: OTelConventions.cicd.pipeline.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.cicd.pipeline.name) }
             }
         
             /// `cicd.pipeline.run` namespace
@@ -90,7 +90,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `120912`
-                    public var id: Self.Key<String> { .init(name: OTelConventions.cicd.pipeline.run.id) }
+                    public var id: Self.Key<String> { .init(name: OTelAttributes.cicd.pipeline.run.id) }
                 }
             
             
@@ -127,7 +127,7 @@ extension SpanAttributes {
                     ///     - `Go Build`
                     ///     - `go-test`
                     ///     - `deploy_binary`
-                    public var name: Self.Key<String> { .init(name: OTelConventions.cicd.pipeline.task.name) }
+                    public var name: Self.Key<String> { .init(name: OTelAttributes.cicd.pipeline.task.name) }
             
                     /// `cicd.pipeline.task.type`: The type of the task within a pipeline. 
                     /// 
@@ -142,7 +142,7 @@ extension SpanAttributes {
                     ///     - `build`
                     ///     - `test`
                     ///     - `deploy`
-                    public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.cicd.pipeline.task.type) }
+                    public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.cicd.pipeline.task.type) }
                     
                     public enum TypeEnum: String, SpanAttributeConvertible {
                         /// `build`: build
@@ -184,7 +184,7 @@ extension SpanAttributes {
                         /// - Type: string
                         /// 
                         /// - Example: `12097`
-                        public var id: Self.Key<String> { .init(name: OTelConventions.cicd.pipeline.task.run.id) }
+                        public var id: Self.Key<String> { .init(name: OTelAttributes.cicd.pipeline.task.run.id) }
                     }
                 
                     /// `cicd.pipeline.task.run.url` namespace
@@ -214,7 +214,7 @@ extension SpanAttributes {
                             /// - Type: string
                             /// 
                             /// - Example: `https://github.com/open-telemetry/semantic-conventions/actions/runs/9753949763/job/26920038674?pr=1075`
-                            public var full: Self.Key<String> { .init(name: OTelConventions.cicd.pipeline.task.run.url.full) }
+                            public var full: Self.Key<String> { .init(name: OTelAttributes.cicd.pipeline.task.run.url.full) }
                         }
                     
                     

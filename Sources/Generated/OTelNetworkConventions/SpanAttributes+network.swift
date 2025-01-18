@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `tcp`
             ///     - `udp`
-            public var transport: Self.Key<TransportEnum> { .init(name: OTelConventions.network.transport) }
+            public var transport: Self.Key<TransportEnum> { .init(name: OTelAttributes.network.transport) }
             
             public enum TransportEnum: String, SpanAttributeConvertible {
                 /// `tcp`: TCP
@@ -73,7 +73,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `ipv4`
             ///     - `ipv6`
-            public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.network.type) }
+            public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.network.type) }
             
             public enum TypeEnum: String, SpanAttributeConvertible {
                 /// `ipv4`: IPv4
@@ -113,7 +113,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `DE`
-                public var icc: Self.Key<String> { .init(name: OTelConventions.network.carrier.icc) }
+                public var icc: Self.Key<String> { .init(name: OTelAttributes.network.carrier.icc) }
         
                 /// `network.carrier.mcc`: The mobile carrier country code.
                 /// 
@@ -122,7 +122,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `310`
-                public var mcc: Self.Key<String> { .init(name: OTelConventions.network.carrier.mcc) }
+                public var mcc: Self.Key<String> { .init(name: OTelAttributes.network.carrier.mcc) }
         
                 /// `network.carrier.mnc`: The mobile carrier network code.
                 /// 
@@ -131,7 +131,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `001`
-                public var mnc: Self.Key<String> { .init(name: OTelConventions.network.carrier.mnc) }
+                public var mnc: Self.Key<String> { .init(name: OTelAttributes.network.carrier.mnc) }
         
                 /// `network.carrier.name`: The name of the mobile carrier.
                 /// 
@@ -140,7 +140,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `sprint`
-                public var name: Self.Key<String> { .init(name: OTelConventions.network.carrier.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.network.carrier.name) }
             }
         
         
@@ -194,7 +194,7 @@ extension SpanAttributes {
                 ///     - `lte_ca`: LTE CA
                 /// 
                 /// - Example: `LTE`
-                public var subtype: Self.Key<SubtypeEnum> { .init(name: OTelConventions.network.connection.subtype) }
+                public var subtype: Self.Key<SubtypeEnum> { .init(name: OTelAttributes.network.connection.subtype) }
                 
                 public enum SubtypeEnum: String, SpanAttributeConvertible {
                     /// `gprs`: GPRS
@@ -256,7 +256,7 @@ extension SpanAttributes {
                 ///     - `unknown`
                 /// 
                 /// - Example: `wifi`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.network.connection.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.network.connection.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `wifi`
@@ -307,7 +307,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `lo`
                 ///     - `eth0`
-                public var name: Self.Key<String> { .init(name: OTelConventions.network.interface.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.network.interface.name) }
             }
         
         
@@ -342,7 +342,7 @@ extension SpanAttributes {
                 ///     - `receive`
                 /// 
                 /// - Example: `transmit`
-                public var direction: Self.Key<DirectionEnum> { .init(name: OTelConventions.network.io.direction) }
+                public var direction: Self.Key<DirectionEnum> { .init(name: OTelAttributes.network.io.direction) }
                 
                 public enum DirectionEnum: String, SpanAttributeConvertible {
                     /// `transmit`
@@ -387,7 +387,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `10.1.2.80`
                 ///     - `/tmp/my.sock`
-                public var address: Self.Key<String> { .init(name: OTelConventions.network.local.address) }
+                public var address: Self.Key<String> { .init(name: OTelAttributes.network.local.address) }
         
                 /// `network.local.port`: Local port number of the network connection.
                 /// 
@@ -396,7 +396,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `65123`
-                public var port: Self.Key<Int> { .init(name: OTelConventions.network.local.port) }
+                public var port: Self.Key<Int> { .init(name: OTelAttributes.network.local.port) }
             }
         
         
@@ -431,7 +431,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `10.1.2.80`
                 ///     - `/tmp/my.sock`
-                public var address: Self.Key<String> { .init(name: OTelConventions.network.peer.address) }
+                public var address: Self.Key<String> { .init(name: OTelAttributes.network.peer.address) }
         
                 /// `network.peer.port`: Peer port number of the network connection.
                 /// 
@@ -440,7 +440,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `65123`
-                public var port: Self.Key<Int> { .init(name: OTelConventions.network.peer.port) }
+                public var port: Self.Key<Int> { .init(name: OTelAttributes.network.peer.port) }
             }
         
         
@@ -478,7 +478,7 @@ extension SpanAttributes {
                 ///     - `amqp`
                 ///     - `http`
                 ///     - `mqtt`
-                public var name: Self.Key<String> { .init(name: OTelConventions.network.protocol.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.network.protocol.name) }
         
                 /// `network.protocol.version`: The actual version of the protocol used for network communication.
                 /// 
@@ -491,7 +491,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `1.1`
                 ///     - `2`
-                public var version: Self.Key<String> { .init(name: OTelConventions.network.protocol.version) }
+                public var version: Self.Key<String> { .init(name: OTelAttributes.network.protocol.version) }
             }
         
         

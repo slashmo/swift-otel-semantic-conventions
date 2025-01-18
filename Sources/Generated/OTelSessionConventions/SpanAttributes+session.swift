@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `00112233-4455-6677-8899-aabbccddeeff`
-            public var id: Self.Key<String> { .init(name: OTelConventions.session.id) }
+            public var id: Self.Key<String> { .init(name: OTelAttributes.session.id) }
     
             /// `session.previous_id`: The previous `session.id` for this user, when known.
             /// 
@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `00112233-4455-6677-8899-aabbccddeeff`
-            public var previous_id: Self.Key<String> { .init(name: OTelConventions.session.previous_id) }
+            public var previous_id: Self.Key<String> { .init(name: OTelAttributes.session.previous_id) }
         }
     
     

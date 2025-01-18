@@ -34,7 +34,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `[{'role': 'assistant', 'content': 'The capital of France is Paris.'}]`
             @available(*, deprecated, message: "Removed, no replacement at this time.")
-            public var completion: Self.Key<String> { .init(name: OTelConventions.gen_ai.completion) }
+            public var completion: Self.Key<String> { .init(name: OTelAttributes.gen_ai.completion) }
     
             /// `gen_ai.prompt`: Deprecated, use Event API to report prompt contents.
             /// 
@@ -44,7 +44,7 @@ extension SpanAttributes {
             /// 
             /// - Example: `[{'role': 'user', 'content': 'What is the capital of France?'}]`
             @available(*, deprecated, message: "Removed, no replacement at this time.")
-            public var prompt: Self.Key<String> { .init(name: OTelConventions.gen_ai.prompt) }
+            public var prompt: Self.Key<String> { .init(name: OTelAttributes.gen_ai.prompt) }
     
             /// `gen_ai.system`: The Generative AI product as identified by the client or server instrumentation.
             /// 
@@ -62,7 +62,7 @@ extension SpanAttributes {
             /// The `gen_ai.system` describes a family of GenAI models with specific model identified by `gen_ai.request.model` and `gen_ai.response.model` attributes.  The actual GenAI product may differ from the one identified by the client. For example, when using OpenAI client libraries to communicate with Mistral, the `gen_ai.system` is set to `openai` based on the instrumentation's best knowledge.  For custom model, a custom friendly name SHOULD be used. If none of these options apply, the `gen_ai.system` SHOULD be set to `_OTHER`. 
             /// 
             /// - Example: `openai`
-            public var system: Self.Key<SystemEnum> { .init(name: OTelConventions.gen_ai.system) }
+            public var system: Self.Key<SystemEnum> { .init(name: OTelAttributes.gen_ai.system) }
             
             public enum SystemEnum: String, SpanAttributeConvertible {
                 /// `openai`: OpenAI
@@ -138,7 +138,7 @@ extension SpanAttributes {
                     ///     - `json_schema`: JSON schema response format
                     /// 
                     /// - Example: `json`
-                    public var response_format: Self.Key<Response_FormatEnum> { .init(name: OTelConventions.gen_ai.openai.request.response_format) }
+                    public var response_format: Self.Key<Response_FormatEnum> { .init(name: OTelAttributes.gen_ai.openai.request.response_format) }
                     
                     public enum Response_FormatEnum: String, SpanAttributeConvertible {
                         /// `text`: Text response format
@@ -159,7 +159,7 @@ extension SpanAttributes {
                     /// - Type: int
                     /// 
                     /// - Example: `100`
-                    public var seed: Self.Key<Int> { .init(name: OTelConventions.gen_ai.openai.request.seed) }
+                    public var seed: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.openai.request.seed) }
             
                     /// `gen_ai.openai.request.service_tier`: The service tier requested. May be a specific tier, default, or auto.
                     /// 
@@ -172,7 +172,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `auto`
                     ///     - `default`
-                    public var service_tier: Self.Key<Service_TierEnum> { .init(name: OTelConventions.gen_ai.openai.request.service_tier) }
+                    public var service_tier: Self.Key<Service_TierEnum> { .init(name: OTelAttributes.gen_ai.openai.request.service_tier) }
                     
                     public enum Service_TierEnum: String, SpanAttributeConvertible {
                         /// `auto`: The system will utilize scale tier credits until they are exhausted.
@@ -217,7 +217,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `scale`
                     ///     - `default`
-                    public var service_tier: Self.Key<String> { .init(name: OTelConventions.gen_ai.openai.response.service_tier) }
+                    public var service_tier: Self.Key<String> { .init(name: OTelAttributes.gen_ai.openai.response.service_tier) }
             
                     /// `gen_ai.openai.response.system_fingerprint`: A fingerprint to track any eventual change in the Generative AI environment.
                     /// 
@@ -226,7 +226,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `fp_44709d6fcb`
-                    public var system_fingerprint: Self.Key<String> { .init(name: OTelConventions.gen_ai.openai.response.system_fingerprint) }
+                    public var system_fingerprint: Self.Key<String> { .init(name: OTelAttributes.gen_ai.openai.response.system_fingerprint) }
                 }
             
             
@@ -263,7 +263,7 @@ extension SpanAttributes {
                 ///     - `embeddings`: Embeddings operation such as [OpenAI Create embeddings API](https://platform.openai.com/docs/api-reference/embeddings/create)
                 /// 
                 /// If one of the predefined values applies, but specific system uses a different name it's RECOMMENDED to document it in the semantic conventions for specific GenAI system and use system-specific name in the instrumentation. If a different name is not documented, instrumentation libraries SHOULD use applicable predefined value. 
-                public var name: Self.Key<NameEnum> { .init(name: OTelConventions.gen_ai.operation.name) }
+                public var name: Self.Key<NameEnum> { .init(name: OTelAttributes.gen_ai.operation.name) }
                 
                 public enum NameEnum: String, SpanAttributeConvertible {
                     /// `chat`: Chat completion operation such as [OpenAI Chat API](https://platform.openai.com/docs/api-reference/chat)
@@ -308,7 +308,7 @@ extension SpanAttributes {
                 /// - Type: stringArray
                 /// 
                 /// In some GenAI systems the encoding formats are called embedding types. Also, some GenAI systems only accept a single format per request. 
-                public var encoding_formats: Self.Key<[String]> { .init(name: OTelConventions.gen_ai.request.encoding_formats) }
+                public var encoding_formats: Self.Key<[String]> { .init(name: OTelAttributes.gen_ai.request.encoding_formats) }
         
                 /// `gen_ai.request.frequency_penalty`: The frequency penalty setting for the GenAI request.
                 /// 
@@ -317,7 +317,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `0.1`
-                public var frequency_penalty: Self.Key<Double> { .init(name: OTelConventions.gen_ai.request.frequency_penalty) }
+                public var frequency_penalty: Self.Key<Double> { .init(name: OTelAttributes.gen_ai.request.frequency_penalty) }
         
                 /// `gen_ai.request.max_tokens`: The maximum number of tokens the model generates for a request.
                 /// 
@@ -326,7 +326,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `100`
-                public var max_tokens: Self.Key<Int> { .init(name: OTelConventions.gen_ai.request.max_tokens) }
+                public var max_tokens: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.request.max_tokens) }
         
                 /// `gen_ai.request.model`: The name of the GenAI model a request is being made to.
                 /// 
@@ -335,7 +335,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `gpt-4`
-                public var model: Self.Key<String> { .init(name: OTelConventions.gen_ai.request.model) }
+                public var model: Self.Key<String> { .init(name: OTelAttributes.gen_ai.request.model) }
         
                 /// `gen_ai.request.presence_penalty`: The presence penalty setting for the GenAI request.
                 /// 
@@ -344,14 +344,14 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `0.1`
-                public var presence_penalty: Self.Key<Double> { .init(name: OTelConventions.gen_ai.request.presence_penalty) }
+                public var presence_penalty: Self.Key<Double> { .init(name: OTelAttributes.gen_ai.request.presence_penalty) }
         
                 /// `gen_ai.request.stop_sequences`: List of sequences that the model will use to stop generating further tokens.
                 /// 
                 /// - Stability: experimental
                 /// 
                 /// - Type: stringArray
-                public var stop_sequences: Self.Key<[String]> { .init(name: OTelConventions.gen_ai.request.stop_sequences) }
+                public var stop_sequences: Self.Key<[String]> { .init(name: OTelAttributes.gen_ai.request.stop_sequences) }
         
                 /// `gen_ai.request.temperature`: The temperature setting for the GenAI request.
                 /// 
@@ -360,7 +360,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `0.0`
-                public var temperature: Self.Key<Double> { .init(name: OTelConventions.gen_ai.request.temperature) }
+                public var temperature: Self.Key<Double> { .init(name: OTelAttributes.gen_ai.request.temperature) }
         
                 /// `gen_ai.request.top_k`: The top_k sampling setting for the GenAI request.
                 /// 
@@ -369,7 +369,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `1.0`
-                public var top_k: Self.Key<Double> { .init(name: OTelConventions.gen_ai.request.top_k) }
+                public var top_k: Self.Key<Double> { .init(name: OTelAttributes.gen_ai.request.top_k) }
         
                 /// `gen_ai.request.top_p`: The top_p sampling setting for the GenAI request.
                 /// 
@@ -378,7 +378,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `1.0`
-                public var top_p: Self.Key<Double> { .init(name: OTelConventions.gen_ai.request.top_p) }
+                public var top_p: Self.Key<Double> { .init(name: OTelAttributes.gen_ai.request.top_p) }
             }
         
         
@@ -409,7 +409,7 @@ extension SpanAttributes {
                 /// - Stability: experimental
                 /// 
                 /// - Type: stringArray
-                public var finish_reasons: Self.Key<[String]> { .init(name: OTelConventions.gen_ai.response.finish_reasons) }
+                public var finish_reasons: Self.Key<[String]> { .init(name: OTelAttributes.gen_ai.response.finish_reasons) }
         
                 /// `gen_ai.response.id`: The unique identifier for the completion.
                 /// 
@@ -418,7 +418,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `chatcmpl-123`
-                public var id: Self.Key<String> { .init(name: OTelConventions.gen_ai.response.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.gen_ai.response.id) }
         
                 /// `gen_ai.response.model`: The name of the model that generated the response.
                 /// 
@@ -427,7 +427,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `gpt-4-0613`
-                public var model: Self.Key<String> { .init(name: OTelConventions.gen_ai.response.model) }
+                public var model: Self.Key<String> { .init(name: OTelAttributes.gen_ai.response.model) }
             }
         
         
@@ -464,7 +464,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `input`
                 ///     - `output`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.gen_ai.token.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.gen_ai.token.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `input`: Input tokens (prompt, input, etc.)
@@ -508,7 +508,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `42`
                 @available(*, deprecated, message: "Replaced by `gen_ai.usage.output_tokens` attribute.")
-                public var completion_tokens: Self.Key<Int> { .init(name: OTelConventions.gen_ai.usage.completion_tokens) }
+                public var completion_tokens: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.usage.completion_tokens) }
         
                 /// `gen_ai.usage.input_tokens`: The number of tokens used in the GenAI input (prompt).
                 /// 
@@ -517,7 +517,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `100`
-                public var input_tokens: Self.Key<Int> { .init(name: OTelConventions.gen_ai.usage.input_tokens) }
+                public var input_tokens: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.usage.input_tokens) }
         
                 /// `gen_ai.usage.output_tokens`: The number of tokens used in the GenAI response (completion).
                 /// 
@@ -526,7 +526,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `180`
-                public var output_tokens: Self.Key<Int> { .init(name: OTelConventions.gen_ai.usage.output_tokens) }
+                public var output_tokens: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.usage.output_tokens) }
         
                 /// `gen_ai.usage.prompt_tokens`: Deprecated, use `gen_ai.usage.input_tokens` instead.
                 /// 
@@ -536,7 +536,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `42`
                 @available(*, deprecated, message: "Replaced by `gen_ai.usage.input_tokens` attribute.")
-                public var prompt_tokens: Self.Key<Int> { .init(name: OTelConventions.gen_ai.usage.prompt_tokens) }
+                public var prompt_tokens: Self.Key<Int> { .init(name: OTelAttributes.gen_ai.usage.prompt_tokens) }
             }
         
         

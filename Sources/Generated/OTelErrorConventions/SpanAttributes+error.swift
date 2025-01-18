@@ -40,7 +40,7 @@ extension SpanAttributes {
             ///     - `java.net.UnknownHostException`
             ///     - `server_certificate_invalid`
             ///     - `500`
-            public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.error.type) }
+            public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.error.type) }
             
             public enum TypeEnum: String, SpanAttributeConvertible {
                 /// `_OTHER`: A fallback error value to be used when the instrumentation doesn't define a custom value.

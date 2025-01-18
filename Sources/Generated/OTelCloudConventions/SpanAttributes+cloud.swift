@@ -35,7 +35,7 @@ extension SpanAttributes {
             /// Availability zones are called "zones" on Alibaba Cloud and Google Cloud. 
             /// 
             /// - Example: `us-east-1c`
-            public var availability_zone: Self.Key<String> { .init(name: OTelConventions.cloud.availability_zone) }
+            public var availability_zone: Self.Key<String> { .init(name: OTelAttributes.cloud.availability_zone) }
     
             /// `cloud.platform`: The cloud platform in use. 
             /// 
@@ -72,7 +72,7 @@ extension SpanAttributes {
             ///     - `tencent_cloud_scf`: Tencent Cloud Serverless Cloud Function (SCF)
             /// 
             /// The prefix of the service SHOULD match the one specified in `cloud.provider`. 
-            public var platform: Self.Key<PlatformEnum> { .init(name: OTelConventions.cloud.platform) }
+            public var platform: Self.Key<PlatformEnum> { .init(name: OTelAttributes.cloud.platform) }
             
             public enum PlatformEnum: String, SpanAttributeConvertible {
                 /// `alibaba_cloud_ecs`: Alibaba Cloud Elastic Compute Service
@@ -148,7 +148,7 @@ extension SpanAttributes {
             ///     - `heroku`: Heroku Platform as a Service
             ///     - `ibm_cloud`: IBM Cloud
             ///     - `tencent_cloud`: Tencent Cloud
-            public var provider: Self.Key<ProviderEnum> { .init(name: OTelConventions.cloud.provider) }
+            public var provider: Self.Key<ProviderEnum> { .init(name: OTelAttributes.cloud.provider) }
             
             public enum ProviderEnum: String, SpanAttributeConvertible {
                 /// `alibaba_cloud`: Alibaba Cloud
@@ -181,7 +181,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `us-central1`
             ///     - `us-east-1`
-            public var region: Self.Key<String> { .init(name: OTelConventions.cloud.region) }
+            public var region: Self.Key<String> { .init(name: OTelAttributes.cloud.region) }
     
             /// `cloud.resource_id`: Cloud provider-specific native identifier of the monitored cloud resource (e.g. an [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) on AWS, a [fully qualified resource ID](https://learn.microsoft.com/rest/api/resources/resources/get-by-id) on Azure, a [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name) on GCP) 
             /// 
@@ -195,7 +195,7 @@ extension SpanAttributes {
             ///     - `arn:aws:lambda:REGION:ACCOUNT_ID:function:my-function`
             ///     - `//run.googleapis.com/projects/PROJECT_ID/locations/LOCATION_ID/services/SERVICE_ID`
             ///     - `/subscriptions/<SUBSCRIPTION_GUID>/resourceGroups/<RG>/providers/Microsoft.Web/sites/<FUNCAPP>/functions/<FUNC>`
-            public var resource_id: Self.Key<String> { .init(name: OTelConventions.cloud.resource_id) }
+            public var resource_id: Self.Key<String> { .init(name: OTelAttributes.cloud.resource_id) }
         }
     
         /// `cloud.account` namespace
@@ -227,7 +227,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `111111111111`
                 ///     - `opentelemetry`
-                public var id: Self.Key<String> { .init(name: OTelConventions.cloud.account.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.cloud.account.id) }
             }
         
         

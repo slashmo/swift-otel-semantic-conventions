@@ -59,7 +59,7 @@ extension SpanAttributes {
                 ///     - `org.example.TestCase1.test1`
                 ///     - `example/tests/TestCase1.test1`
                 ///     - `ExampleTestCase1_test1`
-                public var name: Self.Key<String> { .init(name: OTelConventions.test.case.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.test.case.name) }
             }
         
             /// `test.case.result` namespace
@@ -93,7 +93,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `pass`
                     ///     - `fail`
-                    public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.test.case.result.status) }
+                    public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.test.case.result.status) }
                     
                     public enum StatusEnum: String, SpanAttributeConvertible {
                         /// `pass`: pass
@@ -137,7 +137,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `TestSuite1`
-                public var name: Self.Key<String> { .init(name: OTelConventions.test.suite.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.test.suite.name) }
             }
         
             /// `test.suite.run` namespace
@@ -179,7 +179,7 @@ extension SpanAttributes {
                     ///     - `aborted`
                     ///     - `timed_out`
                     ///     - `in_progress`
-                    public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.test.suite.run.status) }
+                    public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.test.suite.run.status) }
                     
                     public enum StatusEnum: String, SpanAttributeConvertible {
                         /// `success`: success

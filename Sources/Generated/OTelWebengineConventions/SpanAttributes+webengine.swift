@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `WildFly Full 21.0.0.Final (WildFly Core 13.0.1.Final) - 2.2.2.Final`
-            public var description: Self.Key<String> { .init(name: OTelConventions.webengine.description) }
+            public var description: Self.Key<String> { .init(name: OTelAttributes.webengine.description) }
     
             /// `webengine.name`: The name of the web engine. 
             /// 
@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `WildFly`
-            public var name: Self.Key<String> { .init(name: OTelConventions.webengine.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.webengine.name) }
     
             /// `webengine.version`: The version of the web engine. 
             /// 
@@ -51,7 +51,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `21.0.0`
-            public var version: Self.Key<String> { .init(name: OTelConventions.webengine.version) }
+            public var version: Self.Key<String> { .init(name: OTelAttributes.webengine.version) }
         }
     
     

@@ -36,7 +36,7 @@ extension SpanAttributes {
             ///     - `staging`
             ///     - `production`
             @available(*, deprecated, message: "Deprecated, use `deployment.environment.name` instead.")
-            public var _environment: Self.Key<String> { .init(name: OTelConventions.deployment._environment) }
+            public var _environment: Self.Key<String> { .init(name: OTelAttributes.deployment._environment) }
     
             /// `deployment.id`: The id of the deployment. 
             /// 
@@ -45,7 +45,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `1208`
-            public var id: Self.Key<String> { .init(name: OTelConventions.deployment.id) }
+            public var id: Self.Key<String> { .init(name: OTelAttributes.deployment.id) }
     
             /// `deployment.name`: The name of the deployment. 
             /// 
@@ -56,7 +56,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `deploy my app`
             ///     - `deploy-frontend`
-            public var name: Self.Key<String> { .init(name: OTelConventions.deployment.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.deployment.name) }
     
             /// `deployment.status`: The status of the deployment. 
             /// 
@@ -65,7 +65,7 @@ extension SpanAttributes {
             /// - Type: enum
             ///     - `failed`: failed
             ///     - `succeeded`: succeeded
-            public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.deployment.status) }
+            public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.deployment.status) }
             
             public enum StatusEnum: String, SpanAttributeConvertible {
                 /// `failed`: failed
@@ -109,7 +109,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `staging`
                 ///     - `production`
-                public var name: Self.Key<String> { .init(name: OTelConventions.deployment.environment.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.deployment.environment.name) }
             }
         
         

@@ -39,7 +39,7 @@ extension SpanAttributes {
             /// 
             /// The iOS lifecycle states are defined in the [UIApplicationDelegate documentation](https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902), and from which the `OS terminology` column values are derived. 
             @available(*, deprecated, message: "Moved to a payload field of `device.app.lifecycle`.")
-            public var state: Self.Key<StateEnum> { .init(name: OTelConventions.ios.state) }
+            public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.ios.state) }
             
             public enum StateEnum: String, SpanAttributeConvertible {
                 /// `active`: The app has become `active`. Associated with UIKit notification `applicationDidBecomeActive`.

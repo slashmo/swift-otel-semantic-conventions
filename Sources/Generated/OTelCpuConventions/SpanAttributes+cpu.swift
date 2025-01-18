@@ -43,7 +43,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `user`
             ///     - `system`
-            public var mode: Self.Key<ModeEnum> { .init(name: OTelConventions.cpu.mode) }
+            public var mode: Self.Key<ModeEnum> { .init(name: OTelAttributes.cpu.mode) }
             
             public enum ModeEnum: String, SpanAttributeConvertible {
                 /// `user`

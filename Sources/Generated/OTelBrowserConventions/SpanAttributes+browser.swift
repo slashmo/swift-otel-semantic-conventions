@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: stringArray
             /// 
             /// This value is intended to be taken from the [UA client hints API](https://wicg.github.io/ua-client-hints/#interface) (`navigator.userAgentData.brands`). 
-            public var brands: Self.Key<[String]> { .init(name: OTelConventions.browser.brands) }
+            public var brands: Self.Key<[String]> { .init(name: OTelAttributes.browser.brands) }
     
             /// `browser.language`: Preferred language of the user using the browser
             /// 
@@ -48,7 +48,7 @@ extension SpanAttributes {
             ///     - `en-US`
             ///     - `fr`
             ///     - `fr-FR`
-            public var language: Self.Key<String> { .init(name: OTelConventions.browser.language) }
+            public var language: Self.Key<String> { .init(name: OTelAttributes.browser.language) }
     
             /// `browser.mobile`: A boolean that is true if the browser is running on a mobile device
             /// 
@@ -57,7 +57,7 @@ extension SpanAttributes {
             /// - Type: boolean
             /// 
             /// This value is intended to be taken from the [UA client hints API](https://wicg.github.io/ua-client-hints/#interface) (`navigator.userAgentData.mobile`). If unavailable, this attribute SHOULD be left unset. 
-            public var mobile: Self.Key<Bool> { .init(name: OTelConventions.browser.mobile) }
+            public var mobile: Self.Key<Bool> { .init(name: OTelAttributes.browser.mobile) }
     
             /// `browser.platform`: The platform on which the browser is running
             /// 
@@ -71,7 +71,7 @@ extension SpanAttributes {
             ///     - `Windows`
             ///     - `macOS`
             ///     - `Android`
-            public var platform: Self.Key<String> { .init(name: OTelConventions.browser.platform) }
+            public var platform: Self.Key<String> { .init(name: OTelAttributes.browser.platform) }
         }
     
     

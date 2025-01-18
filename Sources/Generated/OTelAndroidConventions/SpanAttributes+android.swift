@@ -37,7 +37,7 @@ extension SpanAttributes {
             /// 
             /// The Android lifecycle states are defined in [Activity lifecycle callbacks](https://developer.android.com/guide/components/activities/activity-lifecycle#lc), and from which the `OS identifiers` are derived. 
             @available(*, deprecated, message: "Replaced by `device.app.lifecycle`.")
-            public var state: Self.Key<StateEnum> { .init(name: OTelConventions.android.state) }
+            public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.android.state) }
             
             public enum StateEnum: String, SpanAttributeConvertible {
                 /// `created`: Any time before Activity.onResume() or, if the app has no Activity, Context.startService() has been called in the app for the first time.
@@ -81,7 +81,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `33`
                 ///     - `32`
-                public var api_level: Self.Key<String> { .init(name: OTelConventions.android.os.api_level) }
+                public var api_level: Self.Key<String> { .init(name: OTelAttributes.android.os.api_level) }
             }
         
         

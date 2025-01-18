@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `(identifier)`
-            public var device: Self.Key<String> { .init(name: OTelConventions.system.device) }
+            public var device: Self.Key<String> { .init(name: OTelAttributes.system.device) }
         }
     
         /// `system.cpu` namespace
@@ -63,7 +63,7 @@ extension SpanAttributes {
                 /// - Type: int
                 /// 
                 /// - Example: `1`
-                public var logical_number: Self.Key<Int> { .init(name: OTelConventions.system.cpu.logical_number) }
+                public var logical_number: Self.Key<Int> { .init(name: OTelAttributes.system.cpu.logical_number) }
         
                 /// `system.cpu.state`: Deprecated, use `cpu.mode` instead.
                 /// 
@@ -82,7 +82,7 @@ extension SpanAttributes {
                 ///     - `idle`
                 ///     - `interrupt`
                 @available(*, deprecated, message: "Replaced by `cpu.mode`")
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.system.cpu.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.system.cpu.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `user`
@@ -135,7 +135,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `rw, ro`
-                public var mode: Self.Key<String> { .init(name: OTelConventions.system.filesystem.mode) }
+                public var mode: Self.Key<String> { .init(name: OTelAttributes.system.filesystem.mode) }
         
                 /// `system.filesystem.mountpoint`: The filesystem mount path
                 /// 
@@ -144,7 +144,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `/mnt/data`
-                public var mountpoint: Self.Key<String> { .init(name: OTelConventions.system.filesystem.mountpoint) }
+                public var mountpoint: Self.Key<String> { .init(name: OTelAttributes.system.filesystem.mountpoint) }
         
                 /// `system.filesystem.state`: The filesystem state
                 /// 
@@ -156,7 +156,7 @@ extension SpanAttributes {
                 ///     - `reserved`
                 /// 
                 /// - Example: `used`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.system.filesystem.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.system.filesystem.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `used`
@@ -183,7 +183,7 @@ extension SpanAttributes {
                 ///     - `ext4`
                 /// 
                 /// - Example: `ext4`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.system.filesystem.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.system.filesystem.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `fat32`
@@ -241,7 +241,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `free`
                 ///     - `cached`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.system.memory.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.system.memory.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `used`
@@ -303,7 +303,7 @@ extension SpanAttributes {
                 ///     - `time_wait`
                 /// 
                 /// - Example: `close_wait`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.system.network.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.system.network.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `close`
@@ -368,7 +368,7 @@ extension SpanAttributes {
                 ///     - `out`
                 /// 
                 /// - Example: `in`
-                public var direction: Self.Key<DirectionEnum> { .init(name: OTelConventions.system.paging.direction) }
+                public var direction: Self.Key<DirectionEnum> { .init(name: OTelAttributes.system.paging.direction) }
                 
                 public enum DirectionEnum: String, SpanAttributeConvertible {
                     /// `in`
@@ -389,7 +389,7 @@ extension SpanAttributes {
                 ///     - `free`
                 /// 
                 /// - Example: `free`
-                public var state: Self.Key<StateEnum> { .init(name: OTelConventions.system.paging.state) }
+                public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.system.paging.state) }
                 
                 public enum StateEnum: String, SpanAttributeConvertible {
                     /// `used`
@@ -410,7 +410,7 @@ extension SpanAttributes {
                 ///     - `minor`
                 /// 
                 /// - Example: `minor`
-                public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.system.paging.type) }
+                public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.system.paging.type) }
                 
                 public enum TypeEnum: String, SpanAttributeConvertible {
                     /// `major`
@@ -457,7 +457,7 @@ extension SpanAttributes {
                 ///     - `defunct`
                 /// 
                 /// - Example: `running`
-                public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.system.process.status) }
+                public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.system.process.status) }
                 
                 public enum StatusEnum: String, SpanAttributeConvertible {
                     /// `running`
@@ -509,7 +509,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `running`
                 @available(*, deprecated, message: "Replaced by `system.process.status`.")
-                public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.system.processes.status) }
+                public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.system.processes.status) }
                 
                 public enum StatusEnum: String, SpanAttributeConvertible {
                     /// `running`

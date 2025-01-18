@@ -38,7 +38,7 @@ extension SpanAttributes {
             ///     - `destination.example.com`
             ///     - `10.1.2.80`
             ///     - `/tmp/my.sock`
-            public var address: Self.Key<String> { .init(name: OTelConventions.destination.address) }
+            public var address: Self.Key<String> { .init(name: OTelAttributes.destination.address) }
     
             /// `destination.port`: Destination port number
             /// 
@@ -49,7 +49,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `3389`
             ///     - `2888`
-            public var port: Self.Key<Int> { .init(name: OTelConventions.destination.port) }
+            public var port: Self.Key<Int> { .init(name: OTelAttributes.destination.port) }
         }
     
     

@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `94040`
-            public var postal_code: Self.Key<String> { .init(name: OTelConventions.geo.postal_code) }
+            public var postal_code: Self.Key<String> { .init(name: OTelAttributes.geo.postal_code) }
         }
     
         /// `geo.continent` namespace
@@ -68,7 +68,7 @@ extension SpanAttributes {
                 ///     - `NA`: North America
                 ///     - `OC`: Oceania
                 ///     - `SA`: South America
-                public var code: Self.Key<CodeEnum> { .init(name: OTelConventions.geo.continent.code) }
+                public var code: Self.Key<CodeEnum> { .init(name: OTelAttributes.geo.continent.code) }
                 
                 public enum CodeEnum: String, SpanAttributeConvertible {
                     /// `AF`: Africa
@@ -121,7 +121,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CA`
-                public var iso_code: Self.Key<String> { .init(name: OTelConventions.geo.country.iso_code) }
+                public var iso_code: Self.Key<String> { .init(name: OTelAttributes.geo.country.iso_code) }
             }
         
         
@@ -156,7 +156,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `Montreal`
                 ///     - `Berlin`
-                public var name: Self.Key<String> { .init(name: OTelConventions.geo.locality.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.geo.locality.name) }
             }
         
         
@@ -189,7 +189,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `45.505918`
-                public var lat: Self.Key<Double> { .init(name: OTelConventions.geo.location.lat) }
+                public var lat: Self.Key<Double> { .init(name: OTelAttributes.geo.location.lat) }
         
                 /// `geo.location.lon`: Longitude of the geo location in [WGS84](https://wikipedia.org/wiki/World_Geodetic_System#WGS84). 
                 /// 
@@ -198,7 +198,7 @@ extension SpanAttributes {
                 /// - Type: double
                 /// 
                 /// - Example: `-73.614830`
-                public var lon: Self.Key<Double> { .init(name: OTelConventions.geo.location.lon) }
+                public var lon: Self.Key<Double> { .init(name: OTelAttributes.geo.location.lon) }
             }
         
         
@@ -231,7 +231,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `CA-QC`
-                public var iso_code: Self.Key<String> { .init(name: OTelConventions.geo.region.iso_code) }
+                public var iso_code: Self.Key<String> { .init(name: OTelAttributes.geo.region.iso_code) }
             }
         
         

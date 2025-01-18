@@ -39,7 +39,7 @@ extension SpanAttributes {
             ///     - `docker-image-amd64-v0.1.0`
             ///     - `release-1.tar.gz`
             ///     - `file-name-package.tar.gz`
-            public var filename: Self.Key<String> { .init(name: OTelConventions.artifact.filename) }
+            public var filename: Self.Key<String> { .init(name: OTelAttributes.artifact.filename) }
     
             /// `artifact.hash`: The full [hash value (see glossary)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf), often found in checksum.txt on a release of the artifact and used to verify package integrity. 
             /// 
@@ -50,7 +50,7 @@ extension SpanAttributes {
             /// The specific algorithm used to create the cryptographic hash value is not defined. In situations where an artifact has multiple cryptographic hashes, it is up to the implementer to choose which hash value to set here; this should be the most secure hash algorithm that is suitable for the situation and consistent with the corresponding attestation. The implementer can then provide the other hash values through an additional set of attribute extensions as they deem necessary. 
             /// 
             /// - Example: `9ff4c52759e2c4ac70b7d517bc7fcdc1cda631ca0045271ddd1b192544f8a3e9`
-            public var hash: Self.Key<String> { .init(name: OTelConventions.artifact.hash) }
+            public var hash: Self.Key<String> { .init(name: OTelAttributes.artifact.hash) }
     
             /// `artifact.purl`: The [Package URL](https://github.com/package-url/purl-spec) of the [package artifact](https://slsa.dev/spec/v1.0/terminology#package-model) provides a standard way to identify and locate the packaged artifact. 
             /// 
@@ -61,7 +61,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `pkg:github/package-url/purl-spec@1209109710924`
             ///     - `pkg:npm/foo@12.12.3`
-            public var purl: Self.Key<String> { .init(name: OTelConventions.artifact.purl) }
+            public var purl: Self.Key<String> { .init(name: OTelAttributes.artifact.purl) }
     
             /// `artifact.version`: The version of the artifact. 
             /// 
@@ -73,7 +73,7 @@ extension SpanAttributes {
             ///     - `v0.1.0`
             ///     - `1.2.1`
             ///     - `122691-build`
-            public var version: Self.Key<String> { .init(name: OTelConventions.artifact.version) }
+            public var version: Self.Key<String> { .init(name: OTelAttributes.artifact.version) }
         }
     
         /// `artifact.attestation` namespace
@@ -107,7 +107,7 @@ extension SpanAttributes {
                 ///     - `docker-image-amd64-v0.1.0.intoto.json1`
                 ///     - `release-1.tar.gz.attestation`
                 ///     - `file-name-package.tar.gz.intoto.json1`
-                public var filename: Self.Key<String> { .init(name: OTelConventions.artifact.attestation.filename) }
+                public var filename: Self.Key<String> { .init(name: OTelAttributes.artifact.attestation.filename) }
         
                 /// `artifact.attestation.hash`: The full [hash value (see glossary)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf), of the built attestation. Some envelopes in the software attestation space also refer to this as the [digest](https://github.com/in-toto/attestation/blob/main/spec/README.md#in-toto-attestation-framework-spec). 
                 /// 
@@ -116,7 +116,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `1b31dfcd5b7f9267bf2ff47651df1cfb9147b9e4df1f335accf65b4cda498408`
-                public var hash: Self.Key<String> { .init(name: OTelConventions.artifact.attestation.hash) }
+                public var hash: Self.Key<String> { .init(name: OTelAttributes.artifact.attestation.hash) }
         
                 /// `artifact.attestation.id`: The id of the build [software attestation](https://slsa.dev/attestation-model). 
                 /// 
@@ -125,7 +125,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `123`
-                public var id: Self.Key<String> { .init(name: OTelConventions.artifact.attestation.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.artifact.attestation.id) }
             }
         
         

@@ -38,7 +38,7 @@ extension SpanAttributes {
             ///     - `example.com`
             ///     - `10.1.2.80`
             ///     - `/tmp/my.sock`
-            public var address: Self.Key<String> { .init(name: OTelConventions.server.address) }
+            public var address: Self.Key<String> { .init(name: OTelAttributes.server.address) }
     
             /// `server.port`: Server port number.
             /// 
@@ -52,7 +52,7 @@ extension SpanAttributes {
             ///     - `80`
             ///     - `8080`
             ///     - `443`
-            public var port: Self.Key<Int> { .init(name: OTelConventions.server.port) }
+            public var port: Self.Key<Int> { .init(name: OTelAttributes.server.port) }
         }
     
     

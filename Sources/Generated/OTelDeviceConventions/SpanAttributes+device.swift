@@ -35,7 +35,7 @@ extension SpanAttributes {
             /// The device identifier MUST only be defined using the values outlined below. This value is not an advertising identifier and MUST NOT be used as such. On iOS (Swift or Objective-C), this value MUST be equal to the [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor). On Android (Java or Kotlin), this value MUST be equal to the Firebase Installation ID or a globally unique UUID which is persisted across sessions in your application. More information can be found [here](https://developer.android.com/training/articles/user-data-ids) on best practices and exact implementation details. Caution should be taken when storing personal data or anything which can identify a user. GDPR and data protection laws may apply, ensure you do your own due diligence. 
             /// 
             /// - Example: `2ab2916d-a51f-4ac8-80ee-45ac31a28092`
-            public var id: Self.Key<String> { .init(name: OTelConventions.device.id) }
+            public var id: Self.Key<String> { .init(name: OTelAttributes.device.id) }
     
             /// `device.manufacturer`: The name of the device manufacturer 
             /// 
@@ -48,7 +48,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `Apple`
             ///     - `Samsung`
-            public var manufacturer: Self.Key<String> { .init(name: OTelConventions.device.manufacturer) }
+            public var manufacturer: Self.Key<String> { .init(name: OTelAttributes.device.manufacturer) }
         }
     
         /// `device.model` namespace
@@ -82,7 +82,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `iPhone3,4`
                 ///     - `SM-G920F`
-                public var identifier: Self.Key<String> { .init(name: OTelConventions.device.model.identifier) }
+                public var identifier: Self.Key<String> { .init(name: OTelAttributes.device.model.identifier) }
         
                 /// `device.model.name`: The marketing name for the device model 
                 /// 
@@ -95,7 +95,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `iPhone 6s Plus`
                 ///     - `Samsung Galaxy S6`
-                public var name: Self.Key<String> { .init(name: OTelConventions.device.model.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.device.model.name) }
             }
         
         

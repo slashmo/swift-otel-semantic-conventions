@@ -38,7 +38,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `web_sockets`
             ///     - `long_polling`
-            public var transport: Self.Key<TransportEnum> { .init(name: OTelConventions.signalr.transport) }
+            public var transport: Self.Key<TransportEnum> { .init(name: OTelAttributes.signalr.transport) }
             
             public enum TransportEnum: String, SpanAttributeConvertible {
                 /// `server_sent_events`: ServerSentEvents protocol
@@ -85,7 +85,7 @@ extension SpanAttributes {
                 /// - Examples:
                 ///     - `app_shutdown`
                 ///     - `timeout`
-                public var status: Self.Key<StatusEnum> { .init(name: OTelConventions.signalr.connection.status) }
+                public var status: Self.Key<StatusEnum> { .init(name: OTelAttributes.signalr.connection.status) }
                 
                 public enum StatusEnum: String, SpanAttributeConvertible {
                     /// `normal_closure`: The connection was closed normally.

@@ -63,7 +63,7 @@ extension SpanAttributes {
                 ///     - `firestore`
                 ///     - `alloydb`
                 ///     - `spanner`
-                public var service: Self.Key<String> { .init(name: OTelConventions.gcp.client.service) }
+                public var service: Self.Key<String> { .init(name: OTelAttributes.gcp.client.service) }
             }
         
         
@@ -121,7 +121,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `job-name-xxxx`
                     ///     - `sample-job-mdw84`
-                    public var execution: Self.Key<String> { .init(name: OTelConventions.gcp.cloud_run.job.execution) }
+                    public var execution: Self.Key<String> { .init(name: OTelAttributes.gcp.cloud_run.job.execution) }
             
                     /// `gcp.cloud_run.job.task_index`: The index for a task within an execution as provided by the [`CLOUD_RUN_TASK_INDEX`](https://cloud.google.com/run/docs/container-contract#jobs-env-vars) environment variable. 
                     /// 
@@ -132,7 +132,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `0`
                     ///     - `1`
-                    public var task_index: Self.Key<Int> { .init(name: OTelConventions.gcp.cloud_run.job.task_index) }
+                    public var task_index: Self.Key<Int> { .init(name: OTelAttributes.gcp.cloud_run.job.task_index) }
                 }
             
             
@@ -191,7 +191,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `my-host1234.example.com`
                     ///     - `sample-vm.us-west1-b.c.my-project.internal`
-                    public var hostname: Self.Key<String> { .init(name: OTelConventions.gcp.gce.instance.hostname) }
+                    public var hostname: Self.Key<String> { .init(name: OTelAttributes.gcp.gce.instance.hostname) }
             
                     /// `gcp.gce.instance.name`: The instance name of a GCE instance. This is the value provided by `host.name`, the visible name of the instance in the Cloud Console UI, and the prefix for the default hostname of the instance as defined by the [default internal DNS name](https://cloud.google.com/compute/docs/internal-dns#instance-fully-qualified-domain-names). 
                     /// 
@@ -202,7 +202,7 @@ extension SpanAttributes {
                     /// - Examples:
                     ///     - `instance-1`
                     ///     - `my-vm-name`
-                    public var name: Self.Key<String> { .init(name: OTelConventions.gcp.gce.instance.name) }
+                    public var name: Self.Key<String> { .init(name: OTelAttributes.gcp.gce.instance.name) }
                 }
             
             

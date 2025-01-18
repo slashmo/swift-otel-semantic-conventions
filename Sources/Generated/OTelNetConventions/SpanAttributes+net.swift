@@ -37,7 +37,7 @@ extension SpanAttributes {
             ///     - `inproc`: In-process communication.
             ///     - `other`: Something else (non IP-based).
             @available(*, deprecated, message: "Replaced by `network.transport`.")
-            public var transport: Self.Key<TransportEnum> { .init(name: OTelConventions.net.transport) }
+            public var transport: Self.Key<TransportEnum> { .init(name: OTelAttributes.net.transport) }
             
             public enum TransportEnum: String, SpanAttributeConvertible {
                 /// `ip_tcp`
@@ -84,7 +84,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `192.168.0.1`
                 @available(*, deprecated, message: "Replaced by `network.local.address`.")
-                public var ip: Self.Key<String> { .init(name: OTelConventions.net.host.ip) }
+                public var ip: Self.Key<String> { .init(name: OTelAttributes.net.host.ip) }
         
                 /// `net.host.name`: Deprecated, use `server.address`.
                 /// 
@@ -94,7 +94,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `example.com`
                 @available(*, deprecated, message: "Replaced by `server.address`.")
-                public var name: Self.Key<String> { .init(name: OTelConventions.net.host.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.net.host.name) }
         
                 /// `net.host.port`: Deprecated, use `server.port`.
                 /// 
@@ -104,7 +104,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `8080`
                 @available(*, deprecated, message: "Replaced by `server.port`.")
-                public var port: Self.Key<Int> { .init(name: OTelConventions.net.host.port) }
+                public var port: Self.Key<Int> { .init(name: OTelAttributes.net.host.port) }
             }
         
         
@@ -138,7 +138,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `127.0.0.1`
                 @available(*, deprecated, message: "Replaced by `network.peer.address`.")
-                public var ip: Self.Key<String> { .init(name: OTelConventions.net.peer.ip) }
+                public var ip: Self.Key<String> { .init(name: OTelAttributes.net.peer.ip) }
         
                 /// `net.peer.name`: Deprecated, use `server.address` on client spans and `client.address` on server spans.
                 /// 
@@ -148,7 +148,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `example.com`
                 @available(*, deprecated, message: "Replaced by `server.address` on client spans and `client.address` on server spans.")
-                public var name: Self.Key<String> { .init(name: OTelConventions.net.peer.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.net.peer.name) }
         
                 /// `net.peer.port`: Deprecated, use `server.port` on client spans and `client.port` on server spans.
                 /// 
@@ -158,7 +158,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `8080`
                 @available(*, deprecated, message: "Replaced by `server.port` on client spans and `client.port` on server spans.")
-                public var port: Self.Key<Int> { .init(name: OTelConventions.net.peer.port) }
+                public var port: Self.Key<Int> { .init(name: OTelAttributes.net.peer.port) }
             }
         
         
@@ -195,7 +195,7 @@ extension SpanAttributes {
                 ///     - `http`
                 ///     - `mqtt`
                 @available(*, deprecated, message: "Replaced by `network.protocol.name`.")
-                public var name: Self.Key<String> { .init(name: OTelConventions.net.protocol.name) }
+                public var name: Self.Key<String> { .init(name: OTelAttributes.net.protocol.name) }
         
                 /// `net.protocol.version`: Deprecated, use `network.protocol.version`.
                 /// 
@@ -205,7 +205,7 @@ extension SpanAttributes {
                 /// 
                 /// - Example: `3.1.1`
                 @available(*, deprecated, message: "Replaced by `network.protocol.version`.")
-                public var version: Self.Key<String> { .init(name: OTelConventions.net.protocol.version) }
+                public var version: Self.Key<String> { .init(name: OTelAttributes.net.protocol.version) }
             }
         
         
@@ -240,7 +240,7 @@ extension SpanAttributes {
                 ///     - `inet6`: IPv6 address
                 ///     - `unix`: Unix domain socket path
                 @available(*, deprecated, message: "Split to `network.transport` and `network.type`.")
-                public var family: Self.Key<FamilyEnum> { .init(name: OTelConventions.net.sock.family) }
+                public var family: Self.Key<FamilyEnum> { .init(name: OTelAttributes.net.sock.family) }
                 
                 public enum FamilyEnum: String, SpanAttributeConvertible {
                     /// `inet`: IPv4 address
@@ -283,7 +283,7 @@ extension SpanAttributes {
                     /// 
                     /// - Example: `/var/my.sock`
                     @available(*, deprecated, message: "Replaced by `network.local.address`.")
-                    public var addr: Self.Key<String> { .init(name: OTelConventions.net.sock.host.addr) }
+                    public var addr: Self.Key<String> { .init(name: OTelAttributes.net.sock.host.addr) }
             
                     /// `net.sock.host.port`: Deprecated, use `network.local.port`.
                     /// 
@@ -293,7 +293,7 @@ extension SpanAttributes {
                     /// 
                     /// - Example: `8080`
                     @available(*, deprecated, message: "Replaced by `network.local.port`.")
-                    public var port: Self.Key<Int> { .init(name: OTelConventions.net.sock.host.port) }
+                    public var port: Self.Key<Int> { .init(name: OTelAttributes.net.sock.host.port) }
                 }
             
             
@@ -327,7 +327,7 @@ extension SpanAttributes {
                     /// 
                     /// - Example: `192.168.0.1`
                     @available(*, deprecated, message: "Replaced by `network.peer.address`.")
-                    public var addr: Self.Key<String> { .init(name: OTelConventions.net.sock.peer.addr) }
+                    public var addr: Self.Key<String> { .init(name: OTelAttributes.net.sock.peer.addr) }
             
                     /// `net.sock.peer.name`: Deprecated, no replacement at this time.
                     /// 
@@ -337,7 +337,7 @@ extension SpanAttributes {
                     /// 
                     /// - Example: `/var/my.sock`
                     @available(*, deprecated, message: "Removed.")
-                    public var name: Self.Key<String> { .init(name: OTelConventions.net.sock.peer.name) }
+                    public var name: Self.Key<String> { .init(name: OTelAttributes.net.sock.peer.name) }
             
                     /// `net.sock.peer.port`: Deprecated, use `network.peer.port`.
                     /// 
@@ -347,7 +347,7 @@ extension SpanAttributes {
                     /// 
                     /// - Example: `65531`
                     @available(*, deprecated, message: "Replaced by `network.peer.port`.")
-                    public var port: Self.Key<Int> { .init(name: OTelConventions.net.sock.peer.port) }
+                    public var port: Self.Key<Int> { .init(name: OTelAttributes.net.sock.peer.port) }
                 }
             
             

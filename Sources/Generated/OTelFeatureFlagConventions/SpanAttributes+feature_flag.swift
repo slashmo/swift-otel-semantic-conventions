@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `logo-color`
-            public var key: Self.Key<String> { .init(name: OTelConventions.feature_flag.key) }
+            public var key: Self.Key<String> { .init(name: OTelAttributes.feature_flag.key) }
     
             /// `feature_flag.provider_name`: Identifies the feature flag provider.
             /// 
@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `Flag Manager`
-            public var provider_name: Self.Key<String> { .init(name: OTelConventions.feature_flag.provider_name) }
+            public var provider_name: Self.Key<String> { .init(name: OTelAttributes.feature_flag.provider_name) }
     
             /// `feature_flag.variant`: A semantic identifier for an evaluated flag value. 
             /// 
@@ -56,7 +56,7 @@ extension SpanAttributes {
             ///     - `red`
             ///     - `true`
             ///     - `on`
-            public var variant: Self.Key<String> { .init(name: OTelConventions.feature_flag.variant) }
+            public var variant: Self.Key<String> { .init(name: OTelAttributes.feature_flag.variant) }
     
             /// `feature_flag.version`: The version of the ruleset used during the evaluation. This may be any stable value which uniquely identifies the ruleset. 
             /// 
@@ -67,7 +67,7 @@ extension SpanAttributes {
             /// - Examples:
             ///     - `1`
             ///     - `01ABCDEF`
-            public var version: Self.Key<String> { .init(name: OTelConventions.feature_flag.version) }
+            public var version: Self.Key<String> { .init(name: OTelAttributes.feature_flag.version) }
         }
     
         /// `feature_flag.context` namespace
@@ -97,7 +97,7 @@ extension SpanAttributes {
                 /// - Type: string
                 /// 
                 /// - Example: `5157782b-2203-4c80-a857-dbbd5e7761db`
-                public var id: Self.Key<String> { .init(name: OTelConventions.feature_flag.context.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.feature_flag.context.id) }
             }
         
         
@@ -143,7 +143,7 @@ extension SpanAttributes {
                 ///     - `targeting_match`
                 ///     - `error`
                 ///     - `default`
-                public var reason: Self.Key<ReasonEnum> { .init(name: OTelConventions.feature_flag.evaluation.reason) }
+                public var reason: Self.Key<ReasonEnum> { .init(name: OTelAttributes.feature_flag.evaluation.reason) }
                 
                 public enum ReasonEnum: String, SpanAttributeConvertible {
                     /// `static`: The resolved value is static (no dynamic evaluation).
@@ -197,7 +197,7 @@ extension SpanAttributes {
                     /// - Type: string
                     /// 
                     /// - Example: `Flag `header-color` expected type `string` but found type `number``
-                    public var message: Self.Key<String> { .init(name: OTelConventions.feature_flag.evaluation.error.message) }
+                    public var message: Self.Key<String> { .init(name: OTelAttributes.feature_flag.evaluation.error.message) }
                 }
             
             
@@ -234,7 +234,7 @@ extension SpanAttributes {
                 ///     - `proj-1`
                 ///     - `ab98sgs`
                 ///     - `service1/dev`
-                public var id: Self.Key<String> { .init(name: OTelConventions.feature_flag.set.id) }
+                public var id: Self.Key<String> { .init(name: OTelAttributes.feature_flag.set.id) }
             }
         
         

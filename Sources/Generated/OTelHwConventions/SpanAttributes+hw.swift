@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `win32battery_battery_testsysa33_1`
-            public var id: Self.Key<String> { .init(name: OTelConventions.hw.id) }
+            public var id: Self.Key<String> { .init(name: OTelAttributes.hw.id) }
     
             /// `hw.name`: An easily-recognizable name for the hardware component 
             /// 
@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `eth0`
-            public var name: Self.Key<String> { .init(name: OTelConventions.hw.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.hw.name) }
     
             /// `hw.parent`: Unique identifier of the parent component (typically the `hw.id` attribute of the enclosure, or disk controller) 
             /// 
@@ -51,7 +51,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `dellStorage_perc_0`
-            public var parent: Self.Key<String> { .init(name: OTelConventions.hw.parent) }
+            public var parent: Self.Key<String> { .init(name: OTelAttributes.hw.parent) }
     
             /// `hw.state`: The current state of the component 
             /// 
@@ -61,7 +61,7 @@ extension SpanAttributes {
             ///     - `ok`: Ok
             ///     - `degraded`: Degraded
             ///     - `failed`: Failed
-            public var state: Self.Key<StateEnum> { .init(name: OTelConventions.hw.state) }
+            public var state: Self.Key<StateEnum> { .init(name: OTelAttributes.hw.state) }
             
             public enum StateEnum: String, SpanAttributeConvertible {
                 /// `ok`: Ok
@@ -96,7 +96,7 @@ extension SpanAttributes {
             ///     - `voltage`: Voltage
             /// 
             /// Describes the category of the hardware component for which `hw.state` is being reported. For example, `hw.type=temperature` along with `hw.state=degraded` would indicate that the temperature of the hardware component has been reported as `degraded`. 
-            public var type: Self.Key<TypeEnum> { .init(name: OTelConventions.hw.type) }
+            public var type: Self.Key<TypeEnum> { .init(name: OTelAttributes.hw.type) }
             
             public enum TypeEnum: String, SpanAttributeConvertible {
                 /// `battery`: Battery

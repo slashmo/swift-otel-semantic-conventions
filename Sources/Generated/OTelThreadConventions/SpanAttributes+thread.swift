@@ -33,7 +33,7 @@ extension SpanAttributes {
             /// - Type: int
             /// 
             /// - Example: `42`
-            public var id: Self.Key<Int> { .init(name: OTelConventions.thread.id) }
+            public var id: Self.Key<Int> { .init(name: OTelAttributes.thread.id) }
     
             /// `thread.name`: Current thread name. 
             /// 
@@ -42,7 +42,7 @@ extension SpanAttributes {
             /// - Type: string
             /// 
             /// - Example: `main`
-            public var name: Self.Key<String> { .init(name: OTelConventions.thread.name) }
+            public var name: Self.Key<String> { .init(name: OTelAttributes.thread.name) }
         }
     
     
